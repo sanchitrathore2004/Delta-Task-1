@@ -6,6 +6,7 @@ let classTitle;
 let colour;
 let colarr;
 let crr = [];
+let flag=0;
 export function Movement(){
 console.log(posPiece);
 ID=this.id;
@@ -25,6 +26,7 @@ console.log(colarr[1]);
 if(colarr[1]=="semirico" || colarr[1]=="rico")
     {
         rotation.classList.add("rico");
+        flag=1;
     }
     if(colarr[1]=="CANON")
         {
@@ -109,6 +111,10 @@ for (let i=0;i<brr.length;i++) {
  function handleTankClick () {
      console.log(brr);
      this.innerHTML = html;
+     if(flag=1)
+        {
+            rotation.classList.remove("rico");
+        }
      console.log(html);
      let posTank = document.querySelector(`#box${ID}`);
      posTank.innerHTML = "";
