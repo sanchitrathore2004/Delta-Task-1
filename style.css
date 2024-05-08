@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    margin-top: 32px;
+    width: 100%;
+    height: 100%;
+}
+.playspace{
+    display: grid;
+    grid-template-rows: repeat(8, 1fr);
+    width: 100vh;
+    height: 90vh;
+}
+.rowdown,
+.rowup{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+}
+.dabba,
+.dabba8,
+.dabba1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: cornsilk;
+    border: 1px solid black;
+    border-radius: 2px;
+    cursor: pointer;
+}
+#box57,
+#box51,
+#box61,
+#box46,
+#box47{display: flex;
+    background-color: aqua;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+#box8,
+#box14,
+#box4,
+#box18,
+#box19{display: flex;
+    background-color: rgb(231, 82, 82);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.rotation{
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    position: absolute;
+    background-color: yellowgreen;
+    align-items: center;
+    border: 1px solid black;
+    width: 200px;
+    height: 100px;
+    visibility: hidden;
+    margin-left: -250px;
+    margin-top: 50px
+    ;
+}
+.left,
+.right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    width: 70px;
+    height: 50px;
+    text-align: center;
+    box-shadow: 1px 1px;
+    background-color: aliceblue;
+    cursor: pointer;
+}
+.rico{
+    visibility: visible;
+}
+.semirico{
+    visibility: visible;
+}
