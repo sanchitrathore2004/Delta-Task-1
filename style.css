@@ -41,16 +41,18 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    overflow: auto;
 }
 #box8,
 #box14,
 #box4,
 #box18,
 #box19{display: flex;
-    background-color: rgb(231, 82, 82);
+    background-color: red;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    overflow: auto;
 }
 .rotation{
     display: flex;
@@ -83,6 +85,21 @@
 .rico{
     visibility: visible;
 }
-.semirico{
-    visibility: visible;
+
+@media screen and (min-width:320px) and (max-width:425px){
+    .playspace{
+        width: 59vh;
+        height: 90vh;
+    }
+    .rotation{
+        margin: 50px;
+        width: 100px;
+        height: 50px;
+    }
+    .left,
+    .right{
+        width: 35px;
+        height: 25px;
+        font-size: x-small;
+    }
 }

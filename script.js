@@ -19,6 +19,16 @@ for(let i=0;i<=64;i++)
     }
     console.log(arr);
 
+    function highlightAdjacentBlocks(i) {
+        console.log("highlight pahucha");
+        let brr = [arr[i-1],arr[i+1],arr[i-7],arr[i-8],arr[i-9],arr[i+7],arr[i+8],arr[i+9]];
+        for (const b of brr) {
+            if (b && !b.innerHTML.trim()) {
+                b.style.backgroundColor = "green";
+            }
+        }
+    }
+
     for(let i = 0;i<=64;i++)
         {
             if(arr[i])
@@ -51,7 +61,7 @@ function Movement(i) {
         posTank.style.backgroundColor = "cornsilk";
         for (const b of brr) {
             if (b && b.innerHTML != "TANK") {
-                b.style.backgroundColor = "cornsilk";
+                // b.style.backgroundColor = "cornsilk";
             }
         }
     }
@@ -59,7 +69,8 @@ function Movement(i) {
     for (const b of brr) {
         if(b)
             {
-                b.style.backgroundColor = "green";
+                highlightAdjacentBlocks(i);
+                // b.style.backgroundColor = "green";
                 b.addEventListener("click", handleTankClick);
             }
     }
