@@ -1,4 +1,5 @@
-import { Movement } from "./supportScript.js";
+import { Movement, switchTurn} from "./supportScript.js";
+// import { switchTurn } from "./.js";
 
 let dabba8 = document.querySelectorAll(".dabba8");
 console.log(dabba8);
@@ -17,6 +18,9 @@ export let arr=[];
 export let info ;
 export let posPiece;
 
+export let rotateObjLeft = document.querySelector(".left");
+export let rotateObjRight = document.querySelector(".right");
+
 export let brr= [];
 export function callFunc(){
 for(let i=0;i<=64;i++)
@@ -26,8 +30,9 @@ for(let i=0;i<=64;i++)
             {
                 posPiece = arr[i];
                 arr[i].addEventListener("click", Movement);
-            
             }
     }
+
 }
 callFunc();
+switchTurn(); 

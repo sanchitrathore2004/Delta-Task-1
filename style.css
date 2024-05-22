@@ -43,6 +43,52 @@
     cursor: pointer;
     overflow: auto;
 }
+
+.semirico,
+.rico{
+    text-decoration: underline;
+    
+}
+.rico.red > span{
+    transform: rotate(45deg);
+    background-color: #000000;
+    color: white;
+    border-radius: 3px;
+    width: 90px;
+    text-decoration: underline;
+    text-align: center;
+    height: 20px;
+}
+.semirico.red > span{
+    transform: rotate(-45deg);
+    background-color: black;
+    color: white;
+    border-radius: 3px;
+    width: 90px;
+    text-decoration: underline;
+    text-align: center;
+    height: 20px;
+}
+.rico.aqua > span{
+    transform: rotate(135deg);
+    background-color: black;
+    color: white;
+    border-radius: 3px;
+    width: 90px;
+    height: 20px;
+    text-align: center;
+    text-decoration: underline;
+}
+.semirico.aqua > span{
+    transform: rotate(-135deg);
+    background-color: black;
+    color: white;
+    border-radius: 3px;
+    width: 90px;
+    text-decoration: underline;
+    text-align: center;
+    height: 20px;
+}
 #box8,
 #box14,
 #box4,
