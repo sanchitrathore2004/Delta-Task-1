@@ -1,3 +1,4 @@
+import { bullet } from "./bullet.js";
 import { arr, callFunc, posPiece, rotation, rotateObjLeft, rotateObjRight } from "./scriptAll.js";
 let red=[];
 let aqua=[];
@@ -7,7 +8,7 @@ let j=0;
 let brr=[];
 let ID;
 let html;
-let classTitle;
+export let classTitle;
 let colour;
 export let colarr;
 let crr = [];
@@ -52,7 +53,6 @@ if(colarr[1]=="semirico" || colarr[1]=="rico")
                         CID=CID.slice(3,5);
                         CID = parseInt(CID);
                         crr[i]=CID;
-
                     }
                     }
             console.log(crr);
@@ -144,6 +144,7 @@ for (let i=0;i<brr.length;i++) {
         removeTankListener(this);
         callFunc();
         switchTurn();
+        bullet();
         
     }
 
@@ -196,6 +197,8 @@ for (let i=0;i<brr.length;i++) {
                         }
                 }
                 arr[ID].style.backgroundColor=`${colour}`;
+                switchTurn();
+                bullet();
       }
 
 
