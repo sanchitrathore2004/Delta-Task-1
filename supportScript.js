@@ -1,5 +1,6 @@
 import { bullet } from "./bullet.js";
 import { arr, callFunc, posPiece, rotation, rotateObjLeft, rotateObjRight } from "./scriptAll.js";
+let finalRotation;
 let red=[];
 let aqua=[];
 var turn="aqua";
@@ -162,32 +163,30 @@ for (let i=0;i<brr.length;i++) {
       let rotationAngle=0;
 
       function rotate () {
-        if(colarr[1]=="semirico" && colarr[2]=="red")
-            {
-                rotationAngle=-45;
-            }
-            else if (colarr[1]=="rico" && colarr[2]=="red")
-                {
-                    rotationAngle=45;
+            let rotationElement = arr[ID].querySelector(".rotatee");
+            let currentRotation = rotationElement.dataset.rotationAngle ? parseInt(rotationElement.dataset.rotationAngle) : 0;
+        
+            if (!rotationElement.dataset.rotationAngle) {
+                if (colarr[1] == "semirico" && colarr[2] == "red") {
+                    currentRotation = -45;
+                } else if (colarr[1] == "rico" && colarr[2] == "red") {
+                    currentRotation = 45;
+                } else if (colarr[1] == "rico" && colarr[2] == "aqua") {
+                    currentRotation = 135;
+                } else if (colarr[1] == "semirico" && colarr[2] == "aqua") {
+                    currentRotation = -135;
                 }
-                else if (colarr[1]=="rico" && colarr[2]=="aqua")
-                    {
-                        rotationAngle=135;
-                    }
-                    else if (colarr[1]=="semirico" && colarr[2]=="aqua")
-                        {
-                            rotationAngle=-135;
-                        }
-        if(rotateObjLeft.innerHTML=="LEFT")
-            {
-                rotationAngle += 90; // Increase the angle by 45 degrees
-                arr[ID].querySelector(".rotatee").style.transform = `rotate(${rotationAngle}deg)`;
             }
-            else if (rotateObjRight.innerHTML=="RIGHT")
-                {
-                    rotationAngle += -90; // Increase the angle by 45 degrees
-                    arr[ID].querySelector(".rotatee").style.transform = `rotate(${rotationAngle}deg)`;
-                }
+        
+            if (rotateObjLeft.innerHTML == "LEFT") {
+                currentRotation -= 90;
+            } else if (rotateObjRight.innerHTML == "RIGHT") {
+                currentRotation = -(currentRotation) + 90;
+            }
+        
+            rotationElement.style.transform = `rotate(${currentRotation}deg)`;
+        
+            rotationElement.dataset.rotationAngle = currentRotation;
                 rotation.classList.remove("rico");
                 brr = [arr[ID-1],arr[ID+1],arr[ID-7],arr[ID-8],arr[ID-9],arr[ID+7],arr[ID+8],arr[ID+9]];
                 for (const e of brr) {

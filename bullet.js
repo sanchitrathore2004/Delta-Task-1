@@ -9,6 +9,7 @@ let canonColor;
 var IDR;
 var IDA;
 let identify;
+let flag=0;
 
 export function bullet () {
     for(let i=0;i<arr.length;i++)
@@ -36,37 +37,62 @@ export function bullet () {
         identify=classTitle.split(" ");
         if(identify[2]=="red")
             {
-                for (let i=0;i<bulletsred.length;i++) {
-                    setTimeout(() => {
-                        if(i>0)
-                            {
-                                bulletsred[i-1].innerHTML="";
-                            }
-                        bulletsred[i].innerHTML=".";
-                        bulletsred[i].style.fontSize="60px";
-                        if(i==(bulletsred.length-1))
-                            {
-                                bulletsred[i].innerHTML="";
-                            }
-                    },i*200);
-                }
+                    moveBullet(bulletsred);
             }
             else if(identify[2]=="aqua")
                 {
-                    for (let i=0;i<bulletsaqua.length;i++) {
-                        setTimeout(() => {
-                            if(i>0)
-                                {
-                                    bulletsaqua[i-1].innerHTML="";
-                                }
-                            bulletsaqua[i].innerHTML=".";
-                            bulletsaqua[i].style.fontSize="60px";
-                            if(i==(bulletsaqua.length-1))
-                                {
-                                    console.log("aarha h");
-                                    bulletsaqua[i].innerHTML="";
-                                }
-                        },i*200);
-                    }
+                        moveBullet(bulletsaqua);
                 }
+}
+
+async function bulletMovement (array,index) {
+    if(array[index].innerHTML=="")
+        {
+            if(index>0)
+                {
+                    array[index-1].innerHTML="";
+                }
+                array[index].innerHTML=".";
+                array[index].style.fontSize="60px";
+                await delay(200);
+                if(index==(array.length-1))
+                    {
+                        console.log("aarha h");
+                        array[index].innerHTML="";
+                    }
+        }
+        else if(array[index].innerHTML=="TANK" || array.innerHTML=="CANON")
+        {
+            console.log(array[index-1]);
+            array[index-1].innerHTML="";
+            flag=1;
+            return;
+        }
+        else if (array[index].innerHTML=="TITAN")
+        {
+            console.log("game over");
+            array[index-1].innerHTML="";
+            flag=1;
+            return;
+        }
+        else if (array[index].innerHTML=="RICO")
+            {
+                //code
+            }
+}
+
+async function moveBullet (array) {
+    for(let i=0;i<array.length;i++)
+        {
+            await bulletMovement(array,i);
+            if(flag==1)
+                {
+                    flag=0;
+                    return;
+                }
+        }
+}
+
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
