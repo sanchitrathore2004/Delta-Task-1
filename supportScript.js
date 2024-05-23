@@ -178,10 +178,12 @@ for (let i=0;i<brr.length;i++) {
                 }
             }
         
-            if (rotateObjLeft.innerHTML == "LEFT") {
+            if (this.innerHTML == "ANTICLOCKWISE") {
+                console.log("got anti");
                 currentRotation -= 90;
-            } else if (rotateObjRight.innerHTML == "RIGHT") {
-                currentRotation = -(currentRotation) + 90;
+            } else if (this.innerHTML == "CLOCKWISE") {
+                console.log("got clockwise");
+                currentRotation = currentRotation+90;
             }
         
             rotationElement.style.transform = `rotate(${currentRotation}deg)`;

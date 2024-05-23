@@ -75,8 +75,9 @@ async function bulletMovement (array,index) {
             flag=1;
             return;
         }
-        else if (array[index].innerHTML=="RICO")
+        else if (array[index].innerHTML=="RICO" || array[index].innerHTML=="SEMIRICO")
             { 
+                
                 console.log(array[index-1]);
                 array[index-1].innerHTML="";
                 flag=1;
