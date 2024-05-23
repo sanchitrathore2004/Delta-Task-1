@@ -76,8 +76,11 @@ async function bulletMovement (array,index) {
             return;
         }
         else if (array[index].innerHTML=="RICO")
-            {
-                //code
+            { 
+                console.log(array[index-1]);
+                array[index-1].innerHTML="";
+                flag=1;
+                return;
             }
 }
 

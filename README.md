@@ -8,3 +8,8 @@
  rotation bug
  turn color bug
  bullet tank titan beech me aaya to bug
+
+
+
+rotation theek krni h
+bullets rotate krni h
