@@ -1,5 +1,6 @@
 *{
     margin: 0;
+    background-color: plum;
 }
 .container{
     display: flex;
@@ -130,6 +131,7 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: larger;
     font-weight: bold;
+    position: relative;
 }
 .afterresetsemiaqua{
     transform: rotate(135deg);
@@ -180,10 +182,10 @@
     background-color: yellowgreen;
     align-items: center;
     border: 1px solid black;
-    width: 300px;
+    width: 350px;
     height: 100px;
-    /* visibility: hidden; */
-    margin-left: -310px;
+    visibility: hidden;
+    margin-left: -370px;
     margin-top: 40px
     ;
 }
@@ -222,7 +224,7 @@
     justify-content: center;
     align-items: center;
     border: 1px solid black;
-    width: 100px;
+    width: 150px;
     height: 50px;
     text-align: center;
     box-shadow: 1px 1px;
@@ -260,4 +262,85 @@
     .time-message{
         margin-left: 85vh;
     }
+}
+
+@keyframes fireBulletUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh);
+        opacity: 1;
+    }
+}
+
+.bullet-up {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    border-radius: 50%;
+    animation: fireBulletUp 2s forwards;
+}
+
+@keyframes fireBulletDown {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 1;
+    }
+}
+
+.bullet-down {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    border-radius: 50%;
+    animation: fireBulletDown 2s forwards;
+}
+
+@keyframes fireBulletLeft {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-100vh);
+        opacity: 1;
+    }
+}
+
+@keyframes fireBulletRight {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100vh);
+        opacity: 1;
+    }
+}
+
+
+.bullet-left {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    border-radius: 50%;
+    animation: fireBulletLeft 2s forwards;
+}
+
+.bullet-right {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    border-radius: 50%;
+    animation: fireBulletRight 2s forwards;
 }

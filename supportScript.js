@@ -154,11 +154,13 @@ for (let i=0;i<brr.length;i++) {
         }
         this.style.backgroundColor = `${colour}`;
         this.className=classTitle;
+        let colours=classTitle.split(" ");
+        let colourr=colours[2];
         console.log(this.className);
         removeTankListener(this);
         callFunc();
         switchTurn();
-        bullet();
+        bullet(colourr);
         
     }
 
