@@ -1,8 +1,10 @@
 import { bullet } from "./bullet.js";
 import { arr, callFunc, posPiece, rotation, rotateObjLeft, rotateObjRight } from "./scriptAll.js";
+import { resumeBtn, timerFunction } from "./timer.js";
 let finalRotation;
 let red=[];
 let aqua=[];
+let resume = document.querySelector(".resume");
 var turn="aqua";
 let i=0;
 let j=0;
@@ -30,6 +32,17 @@ console.log(colour);
 // arr[ID].innerHTML=`*${html}`;
 arr[ID].style.backgroundColor="cornsilk";
 console.log(colarr[1]);
+// if(colour=="aqua")
+//     {
+//         for(let i=0;i<aqua.length;i++)
+//             {
+//                 if(!this)
+//                     {
+//                         console.log("thisssss");
+//                         disableDiv(aqua[i]);
+//                     }
+//             }
+//     }
 if(colarr[1]=="semirico" || colarr[1]=="rico")
     {
         rotation.classList.add("rico");
@@ -203,7 +216,7 @@ for (let i=0;i<brr.length;i++) {
       }
 
 
-      export function switchTurn() {
+      export function switchTurn(sign) {
         for(let k=0;k<arr.length;k++)
             if(arr[k] && arr[k].innerHTML!=="")
                 {
@@ -223,8 +236,35 @@ for (let i=0;i<brr.length;i++) {
                 console.log(`red=${red}`);
                 console.log(`aqua=${aqua}`);
                 console.log(turn);
-                if(turn=="aqua")
+                if(sign==1)
                     {
+                        if(turn!="aqua")
+                            {
+                                timerFunction(1);
+                                for (const a of aqua) {
+                                    enableDiv(arr[a]);
+                                }
+                                for (const r of red) {
+                                    disableDiv(arr[r]);
+                                }
+                                turn = "red";
+                            }
+                            else if (turn != "red")
+                                {
+                                    timerFunction(0);
+                                    for (const r of red) {
+                                        enableDiv(arr[r]);
+                                    }
+                                    for (const a of aqua) {
+                                        disableDiv(arr[a]);
+                                    }
+                                    turn = "aqua";
+                                }
+                                sign=0;
+                    }
+                else if(turn=="aqua")
+                    {
+                        timerFunction(1);
                         for (const a of aqua) {
                             enableDiv(arr[a]);
                         }
@@ -235,6 +275,7 @@ for (let i=0;i<brr.length;i++) {
                     }
                     else if (turn == "red")
                         {
+                            timerFunction(0);
                             for (const r of red) {
                                 enableDiv(arr[r]);
                             }
@@ -243,24 +284,22 @@ for (let i=0;i<brr.length;i++) {
                             }
                             turn = "aqua";
                         }
-                
     }
 
 
-
-
-    function disableDiv(div) {
+    export function disableDiv(div) {
         div.addEventListener('click', preventInteraction, true);
         div.style.opacity = '0.8'; // Optional: visual feedback
     }
     
-    function enableDiv(div) {
+    export function enableDiv(div) {
         div.removeEventListener('click', preventInteraction, true);
         div.style.opacity = ''; // Optional: visual feedback
     }
     
-    function preventInteraction(event) {
+    export function preventInteraction(event) {
         event.stopPropagation();
         event.preventDefault();
     }
+
     

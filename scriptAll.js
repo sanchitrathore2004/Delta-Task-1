@@ -1,5 +1,7 @@
 import { Movement, switchTurn} from "./supportScript.js";
-// import { switchTurn } from "./.js";
+import { timer, resetBtn, pauseBtn, resumeBtn } from "./timer.js"
+
+console.log(timer);
 
 let dabba8 = document.querySelectorAll(".dabba8");
 console.log(dabba8);
@@ -20,6 +22,16 @@ export let posPiece;
 
 export let rotateObjLeft = document.querySelector(".left");
 export let rotateObjRight = document.querySelector(".right");
+
+let reset = document.querySelector(".reset");
+console.log(reset);
+reset.addEventListener("click", resetBtn);
+
+let pause = document.querySelector(".pause");
+let resume = document.querySelector(".resume");
+
+pause.addEventListener("click", pauseBtn);
+resume.addEventListener("click", resumeBtn);
 
 export let brr= [];
 export function callFunc(){
