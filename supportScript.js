@@ -214,7 +214,7 @@ for (let i=0;i<brr.length;i++) {
                 }
                 arr[ID].style.backgroundColor=`${colour}`;
                 switchTurn();
-                bullet();
+                bullet(colour);
       }
 
 
