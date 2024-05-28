@@ -234,33 +234,36 @@
 .rico{
     visibility: visible;
 }
-@media screen and (min-width:320px) and (max-width:425px){
+@media screen and (min-width:320px) and (max-width:426px){
     .playspace{
-        width: 100vh;
+        margin-top: 100px;
+        margin-left: 170px;
+        margin-right: 20px;
+        width: 90vh;
         height: 90vh;
-        margin-left: 550px;
-        margin-top: 200px;
     }
-    .rotation{
-        display: grid;
-        margin-left: -140px;
-        grid-gap: 5px;
-        width: 120px;
-        height: 80px;
+    .dabba,
+    .dabba1,
+    .dabba8{
+        font-size: 12px;
+        color: black;
+        font-weight: bolder;
     }
-    .left,
-    .right{
-        width: 75px;
-        height: 25px;
-        font-size: xx-small;
+    .timer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 150px;
+    }
+    .time-message{
+        margin-left: 150px;
+        width: 90px;
     }
     .btns{
-        margin-left: 670px;
-        margin-right: 20px;
-    }
-    .timer,
-    .time-message{
-        margin-left: 85vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin-top: 480px;
+        margin-left: 120px;
     }
 }
 
