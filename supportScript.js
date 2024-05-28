@@ -5,6 +5,7 @@ let finalRotation;
 let red=[];
 let aqua=[];
 let resume = document.querySelector(".resume");
+let currTurn=document.querySelector(".currTurn");
 var turn="aqua";
 let i=0;
 let j=0;
@@ -274,6 +275,7 @@ for (let i=0;i<brr.length;i++) {
                             disableDiv(arr[r]);
                         }
                         turn = "red";
+                        currTurn.innerHTML="AQUA";
                     }
                     else if (turn == "red")
                         {
@@ -285,6 +287,7 @@ for (let i=0;i<brr.length;i++) {
                                 disableDiv(arr[a]);
                             }
                             turn = "aqua";
+                            currTurn.innerHTML="RED";
                         }
     }
 
