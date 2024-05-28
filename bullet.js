@@ -2,7 +2,8 @@ import { arr } from "./scriptAll.js";
 
 let finalAngleOfPeice;
 let collidables=[];
-let piecee;
+let flag;
+let j=0;
 
 export function bullet(colourr) {
     if (colourr == "aqua") {
@@ -33,17 +34,29 @@ function fireBulletFrom(canonElement, direction) {
     bullet.style.top = `${rect.top}px`;
 
     bulletContainer.appendChild(bullet);
-
-    detectCollision(bullet);
+    collidables=[];
+    j=0;
+    detectCollision(bullet,canonElement);
 }
 
-function detectCollision(bullet) {
+function detectCollision(bullet,comingFrom) {
+    console.log(comingFrom.id);
     for(let i=0;i<arr.length;i++)
         {
-            if(arr[i] && arr[i].innerHTML!="" && arr[i].innerHTML!="CANON")
+            if(arr[i] && arr[i].id==comingFrom.id)
                 {
-                    collidables[i] = arr[i];
+                    console.log(`${i}continue`);
+                    continue;
                 }
+                else if (arr[i] && arr[i].id!=comingFrom.id)
+                    {
+                        if(arr[i].innerHTML!="")
+                            {
+                                console.log(`collidables ke ander${i}`);
+                                collidables[j]=arr[i];
+                                j++;
+                            }
+                    }
         }
         console.log(collidables);
     const checkCollision = setInterval(() => {
@@ -55,34 +68,36 @@ function detectCollision(bullet) {
                 bulletRect.bottom > pieceRect.top &&
                 bulletRect.left < pieceRect.right &&
                 bulletRect.right > pieceRect.left) {
-                handleCollision(bullet, piece);
                 // Collision detected
-                clearInterval(checkCollision);  // Stop checking for collisions once detected
+                bullet.remove();
+                handleCollision(bullet, piece);
+                clearInterval(checkCollision); 
             }
             else 
             return;
         });
 
-        // Check if bullet is out of bounds
         if (bulletRect.top < 0 || bulletRect.top > window.innerHeight ||
             bulletRect.left < 0 || bulletRect.left > window.innerWidth) {
-            clearInterval(checkCollision);  // Stop checking for collisions if bullet is out of bounds
-            bullet.remove();  // Remove the bullet from the DOM
+            clearInterval(checkCollision); 
+            bullet.remove();
         }
-    }, 10);  // Check for collisions every 50 milliseconds
+    }, 50); 
+    
 }
 
 function handleCollision(bullet, piece) {
+    flag=1;
     console.log('Collision detected with', piece);
     var name = piece.className;
     var nameTemp = name.split(" ");
     var bulletDirection = bullet.dataset.direction;
+    console.log(bulletDirection);
 
     if (nameTemp[1] == "semirico") {
         let A = findAngle(piece);
         console.log(A);
 
-        // Add logic based on bullet direction and piece angle
         if (bulletDirection == "up") {
             if(A==-45)
                 {
@@ -112,19 +127,19 @@ function handleCollision(bullet, piece) {
         } else if (bulletDirection == "left") {
             if(A==-45)
                 {
-                    bullet.remove();
+                    fireBulletFrom(piece,'down');
                 }
                 else if(A==45)
                     {
-                        fireBulletFrom(piece,'down');
+                        bullet.remove();
                     }
                     else if(A==-135)
                         {
-                            bullet.remove();
+                            fireBulletFrom(piece,'up');
                         }
                         else if(A==135)
                             {
-                                fireBulletFrom(piece,'up');
+                                bullet.remove();
                             }
         } else if (bulletDirection == "right") {
             if(A==-45)
@@ -144,7 +159,6 @@ function handleCollision(bullet, piece) {
                                 bullet.remove();
                             }
         }
-        detectCollision(bullet);
     }
     else if(nameTemp[1]=="rico")
         {
@@ -153,7 +167,6 @@ function handleCollision(bullet, piece) {
         console.log(A);
         
 
-        // Add logic based on bullet direction and piece angle
         if (bulletDirection == "up") {
             if(A==-45 || A==135)
                 {
@@ -184,15 +197,29 @@ function handleCollision(bullet, piece) {
         } else if (bulletDirection == "right") {
             if(A==-45 || A==135)
                 {
-                    fireBulletFrom(piece,'down');
+                    fireBulletFrom(piece,'up');
                 }
                 else if(A==45 || A==-135)
                     {
-                        fireBulletFrom(piece,'up');
+                        fireBulletFrom(piece,'down');
                     }
         }
-         detectCollision(bullet);
         }
+        else if (nameTemp[1]=="TANK")
+            {
+                bullet.remove();
+            }
+            else if(nameTemp[1]=="TITAN")
+                {
+                    if(nameTemp[2]=="red")
+                        {
+                            alert("Aqua WON!!!");
+                        }
+                        else if (nameTemp[2]=="aqua")
+                            {
+                                alert("Red WON!!!");
+                            }
+                }
 }
 
 function findAngle(piece) {
