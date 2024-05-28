@@ -271,7 +271,7 @@
     }
     100% {
         transform: translateY(-100vh);
-        opacity: 1;
+        opacity: 0;
     }
 }
 
@@ -291,7 +291,7 @@
     }
     100% {
         transform: translateY(100vh);
-        opacity: 1;
+        opacity: 0;
     }
 }
 
@@ -311,7 +311,7 @@
     }
     100% {
         transform: translateX(-100vh);
-        opacity: 1;
+        opacity: 0;
     }
 }
 
@@ -322,7 +322,7 @@
     }
     100% {
         transform: translateX(100vh);
-        opacity: 1;
+        opacity: 0;
     }
 }
 
