@@ -1,5 +1,5 @@
 import { bullet } from "./bullet.js";
-import { arr, callFunc, posPiece, rotation, rotateObjLeft, rotateObjRight, reset } from "./scriptAll.js";
+import { arr, callFunc, posPiece, rotation, rotateObjLeft, rotateObjRight, reset, sign } from "./scriptAll.js";
 import { resetBtn, resumeBtn, timerFunction } from "./timer.js";
 let finalRotation;
 let red=[];
@@ -17,18 +17,65 @@ let colour;
 export let colarr;
 let crr = [];
 let flag=0;
+let redPieces=[];
+let aquaPieces=[];
+let l=0;
+let k=0;
+let currPosition;
 export function Movement(){
+    for(let i=0;i<arr.length;i++)
+        {
+            if(arr[i])
+                {
+                    let name=arr[i].className;
+                    let other=name.split(" ");
+                    let tempColor=other[2];
+                    if(tempColor=="red")
+                        {
+                            redPieces[l]=arr[i];
+                            l++;
+                        }
+                        else if (tempColor=="aqua")
+                            {
+                                aquaPieces[k]=arr[i];
+                                k++;
+                            }
+                }
+        }
+    console.log(redPieces);
+    console.log(aquaPieces);
 console.log(posPiece);
 ID=this.id;
 console.log(ID);
 ID=ID.slice(3,5);
 console.log(ID);
 ID = parseInt(ID)+0;
-console.log(ID);
+console.log(`jaroori id ${ID}`);
 html= this.innerHTML;
 classTitle= this.className;
 colarr=classTitle.split(" ");
 colour=colarr[2];
+currPosition=arr[ID];
+if(colour=="red")
+    {
+        for(let i=0;i<redPieces.length;i++)
+            {
+                if(redPieces[i]!=this)
+                    {
+                        disableDiv(redPieces[i]);
+                    }
+            }
+    }
+    else if (colour=="aqua")
+        {
+            for(let i=0;i<aquaPieces.length;i++)
+                {
+                    if(aquaPieces[i]!=this)
+                        {
+                            disableDiv(aquaPieces[i]);
+                        }
+                }
+        }
 console.log(colour);
 arr[ID].style.backgroundColor="cornsilk";
 console.log(colarr[1]);
@@ -294,5 +341,3 @@ for (let i=0;i<brr.length;i++) {
         event.stopPropagation();
         event.preventDefault();
     }
-
-    

@@ -19,6 +19,7 @@ export let rotation = document.querySelector(".rotation");
 export let arr=[];
 export let info ;
 export let posPiece;
+export let sign;
 
 export let rotateObjLeft = document.querySelector(".left");
 export let rotateObjRight = document.querySelector(".right");
@@ -44,7 +45,6 @@ for(let i=0;i<=64;i++)
                 arr[i].addEventListener("click", Movement);
             }
     }
-
 }
 callFunc();
 switchTurn(); 
