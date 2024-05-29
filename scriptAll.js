@@ -23,7 +23,7 @@ export let posPiece;
 export let rotateObjLeft = document.querySelector(".left");
 export let rotateObjRight = document.querySelector(".right");
 
-let reset = document.querySelector(".reset");
+export let reset = document.querySelector(".reset");
 console.log(reset);
 reset.addEventListener("click", resetBtn);
 

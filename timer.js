@@ -1,6 +1,6 @@
 export let timer=document.querySelector(".timer");
-import { arr } from "./scriptAll.js";
-import { disableDiv, enableDiv, switchTurn} from "./supportScript.js";
+import { arr, callFunc, reset } from "./scriptAll.js";
+import { Movement, disableDiv, enableDiv, switchTurn} from "./supportScript.js";
 
 console.log(timer.innerHTML);
 
@@ -121,4 +121,12 @@ let intervalId;
             timerAqua.innerHTML="300";
             timerRed.innerHTML="300";
             timerFunction(1);
+            for(let i=0;i<arr.length;i++)
+                {
+                    if(arr[i])
+                        {
+                            arr[i].removeEventListener("click",Movement);
+                        }
+                }
+                callFunc();
     }

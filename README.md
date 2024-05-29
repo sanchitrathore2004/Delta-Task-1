@@ -10,4 +10,5 @@
 
 
 
-canon mistake kr rha h
+canon mistake kr rha h   ------ done 
+doosra dabane se pehla band 

@@ -1,6 +1,6 @@
 import { bullet } from "./bullet.js";
-import { arr, callFunc, posPiece, rotation, rotateObjLeft, rotateObjRight } from "./scriptAll.js";
-import { resumeBtn, timerFunction } from "./timer.js";
+import { arr, callFunc, posPiece, rotation, rotateObjLeft, rotateObjRight, reset } from "./scriptAll.js";
+import { resetBtn, resumeBtn, timerFunction } from "./timer.js";
 let finalRotation;
 let red=[];
 let aqua=[];
@@ -30,20 +30,8 @@ classTitle= this.className;
 colarr=classTitle.split(" ");
 colour=colarr[2];
 console.log(colour);
-// arr[ID].innerHTML=`*${html}`;
 arr[ID].style.backgroundColor="cornsilk";
 console.log(colarr[1]);
-// if(colour=="aqua")
-//     {
-//         for(let i=0;i<aqua.length;i++)
-//             {
-//                 if(!this)
-//                     {
-//                         console.log("thisssss");
-//                         disableDiv(aqua[i]);
-//                     }
-//             }
-//     }
 if(colarr[1]=="semirico" || colarr[1]=="rico")
     {
         rotation.classList.add("rico");
