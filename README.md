@@ -11,4 +11,4 @@
 
 
 canon mistake kr rha h   ------ done 
-doosra dabane se pehla band 
+doosra dabane se pehla band ----- doneeeeee

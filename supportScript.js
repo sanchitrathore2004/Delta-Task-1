@@ -21,7 +21,6 @@ let redPieces=[];
 let aquaPieces=[];
 let l=0;
 let k=0;
-let currPosition;
 export function Movement(){
     for(let i=0;i<arr.length;i++)
         {
@@ -55,7 +54,6 @@ html= this.innerHTML;
 classTitle= this.className;
 colarr=classTitle.split(" ");
 colour=colarr[2];
-currPosition=arr[ID];
 if(colour=="red")
     {
         for(let i=0;i<redPieces.length;i++)
