@@ -6,8 +6,7 @@ console.log(timer.innerHTML);
 
 let timerRed=document.querySelector(".timer-red");
 let timerAqua=document.querySelector(".timer-aqua");
-let rotatee=document.querySelectorAll(".rotatee");
-let aquaSemirico=document.querySelector('.dabba.semirico.aqua span');
+let aquaSemirico=document.querySelector("#aquasemirico");
 
 let intervalId;
 
@@ -36,42 +35,6 @@ let intervalId;
     }
 
 
-    export function resetBtn () {
-        console.log("reset btn clicked");
-        for(let i=0;i<arr.length;i++)
-            {
-                if(arr[i] && arr[i].innerHTML!="")
-                    {
-                        arr[i].innerText="";
-                        arr[i].style.backgroundColor="cornsilk";
-                    }
-            }
-            arr[4].innerHTML="TITAN"
-            arr[4].style.backgroundColor="red";
-            arr[8].innerHTML="CANON"
-            arr[8].style.backgroundColor="red";
-            arr[14].innerHTML="TANK"
-            arr[14].style.backgroundColor="red";
-            arr[18].innerHTML="SEMIRICO"
-            arr[18].style.backgroundColor="red";
-            arr[19].innerHTML="RICO"
-            arr[19].style.backgroundColor="red";
-            
-            
-            arr[61].innerHTML="TITAN"
-            arr[61].style.backgroundColor="aqua";
-            arr[57].innerHTML="CANON"
-            arr[57].style.backgroundColor="aqua";
-            arr[51].innerHTML="TANK"
-            arr[51].style.backgroundColor="aqua";
-            arr[46].innerHTML="SEMIRICO"
-            arr[46].style.backgroundColor="aqua";
-            arr[47].innerHTML="RICO"
-            arr[47].style.backgroundColor="aqua";
-            console.log(rotatee);
-    }
-
-
     export function pauseBtn () {
         if (intervalId) {
             clearInterval(intervalId);
@@ -93,4 +56,69 @@ let intervalId;
         if (!intervalId) {
             timerFunction(currentFlag);
         }
+    }
+
+
+    export function resetBtn () {
+        console.log("reset btn clicked");
+        for(let i=0;i<arr.length;i++)
+            {
+                if(arr[i] && arr[i].innerHTML!="")
+                    {
+                        arr[i].innerHTML="";
+                        arr[i].style.backgroundColor="cornsilk";
+                    }
+            }
+            arr[4].innerHTML="TITAN"
+            arr[4].style.backgroundColor="red";
+            arr[8].innerHTML="CANON"
+            arr[8].style.backgroundColor="red";
+            arr[14].innerHTML="TANK"
+            arr[14].style.backgroundColor="red";
+            arr[18].style.backgroundColor="red";
+            arr[19].style.backgroundColor="red";
+            
+            arr[61].innerHTML="TITAN"
+            arr[61].style.backgroundColor="aqua";
+            arr[57].innerHTML="CANON"
+            arr[57].style.backgroundColor="aqua";
+            arr[51].innerHTML="TANK"
+            arr[51].style.backgroundColor="aqua";
+            arr[46].style.backgroundColor="aqua";
+            arr[47].style.backgroundColor="aqua";
+
+
+
+            console.log(arr[18]);
+            const newRedSemirico = document.createElement("span");
+            newRedSemirico.innerText="SEMIRICO";
+            newRedSemirico.classList.add("afterresetsemired");
+            newRedSemirico.classList.add("rotatee");
+
+            arr[18].appendChild(newRedSemirico);
+
+            const newRedRico=document.createElement("span");
+            newRedRico.innerText="RICO";
+            newRedRico.classList.add("afterresetricored");
+            newRedRico.classList.add("rotatee");
+
+            arr[19].appendChild(newRedRico);
+
+            const newAquaRico=document.createElement("span");
+            newAquaRico.innerText="RICO";
+            newAquaRico.classList.add("afterresetricoaqua");
+            newAquaRico.classList.add("rotatee");
+
+            arr[47].appendChild(newAquaRico);
+
+            const newAquaSemirico=document.createElement("span");
+            newAquaSemirico.innerText="SEMIRICO";
+            newAquaSemirico.classList.add("afterresetsemiaqua");
+            newAquaSemirico.classList.add("rotatee");
+
+            arr[46].appendChild(newAquaSemirico);
+
+            timerAqua.innerHTML="300";
+            timerRed.innerHTML="300";
+            timerFunction(1);
     }

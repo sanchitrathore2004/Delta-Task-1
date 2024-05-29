@@ -5,5 +5,9 @@
 
 
 1. bullet border pr chaal rhi h to collision upar detect ho ja rha h ------- done
-2. reset btn theek kro
+2. reset btn theek kro --------- done 
 3. mobile responsive --------- done
+
+
+
+canon mistake kr rha h
