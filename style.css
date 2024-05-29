@@ -1,6 +1,7 @@
 *{
     margin: 0;
     background-color: plum;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .navigation{
     position: sticky;
@@ -68,6 +69,8 @@
     height: 80vh;
     margin-top: 20px;
     margin-left: -600px;
+    border: 4px solid black;
+    border-radius: 3px;
 }
 .rowdown,
 .rowup{
@@ -86,6 +89,11 @@
     border-radius: 3px;
     font-size: x-large;
     text-align: center;
+    transition: background-color 0.5s ease;
+}
+.currTurn:hover{
+    background-color: cornsilk;
+    cursor: pointer;
 }
 .dabba,
 .dabba8,
@@ -94,9 +102,10 @@
     justify-content: center;
     align-items: center;
     background-color: cornsilk;
-    border: 1px solid black;
-    border-radius: 2px;
+    border: 2px solid black;
+    border-radius: 3px;
     cursor: pointer;
+    font-weight: bold;
 }
 #box57,
 #box51,
@@ -120,30 +129,31 @@
     background-color: #000000;
     color: white;
     border-radius: 3px;
-    width: 90px;
+    width: 77px;
     text-decoration: underline;
     text-align: center;
-    height: 20px;
+    height: 17px;
 }
 .semirico.red > span{
     transform: rotate(-45deg);
     background-color: black;
     color: white;
     border-radius: 3px;
-    width: 90px;
+    width: 77px;
     text-decoration: underline;
     text-align: center;
-    height: 20px;
+    height: 17px;
+    font-size: 15px;
 }
-.afterresetricored{
+/* .afterresetricored{
     transform: rotate(45deg);
     background-color: #000000;
     color: white;
     border-radius: 3px;
-    width: 90px;
+    width: 77px;
     text-decoration: underline;
     text-align: center;
-    height: 20px;
+    height: 17px;
 }
 .afterresetsemired{
     transform: rotate(-45deg);
@@ -154,18 +164,18 @@
     text-decoration: underline;
     text-align: center;
     height: 20px;
-}
+} */
 .rico.aqua > span{
     transform: rotate(135deg);
     background-color: black;
     color: white;
     border-radius: 3px;
-    width: 90px;
+    width: 77px;
     height: 20px;
     text-align: center;
     text-decoration: underline;
 }
-.afterresetsemiaqua{
+/* .afterresetsemiaqua{
     transform: rotate(135deg);
     background-color: black;
     color: white;
@@ -184,16 +194,17 @@
     height: 20px;
     text-align: center;
     text-decoration: underline;
-}
+} */
 .semirico.aqua > span{
     transform: rotate(-135deg);
     background-color: black;
     color: white;
     border-radius: 3px;
-    width: 90px;
+    width: 77px;
     text-decoration: underline;
     text-align: center;
     height: 20px;
+    font-size: 15px;
 }
 #box8,
 #box14,
@@ -249,6 +260,14 @@
     width: 100px;
     height: 50px;
     background-color: aquamarine;
+    transition: background-color 0.5s, width 0.5s, height 0.5s ease;
+}
+.reset:hover,
+.pause:hover,
+.resume:hover{
+    background-color: antiquewhite;
+    width: 110px;
+    height: 60px;
 }
 .left,
 .right{
@@ -269,11 +288,12 @@
 @media screen and (min-width:320px) and (max-width:426px){
     .playspace{
         margin-top: 100px;
-        margin-left: 170px;
+        margin-left: 800px;
         margin-right: 20px;
-        width: 90vh;
-        height: 90vh;
+        width: 1000px;
+        height: 1000px;
     }
+    
     .dabba,
     .dabba1,
     .dabba8{
@@ -285,17 +305,30 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-left: 150px;
+        margin-left: 5px;
+        margin-top: 680px;
+        width: 1000px;
     }
     .time-message{
-        margin-left: 150px;
-        width: 90px;
+        margin-left: 455px;
+        margin-top: 650px;
+        width: 150px;
+        font-size: x-large;
     }
     .btns{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        margin-top: 480px;
-        margin-left: 120px;
+        margin-top: 800px;
+        margin-left: 328px;
+    }
+    .turn{
+        margin-top: 1150px;
+        margin-left: 470px;
+        font-size: xx-large;
+        width: 100px;
+    }
+    .currTurn{
+        margin-left: -20px;
     }
 }
 

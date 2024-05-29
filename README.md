@@ -4,12 +4,6 @@
 
 
 
-
- rotation bug
- turn color bug
- bullet tank titan beech me aaya to bug
-
-
-
-rotation theek krni h
-bullets rotate krni h
+1. bullet border pr chaal rhi h to collision upar detect ho ja rha h ------- done
+2. reset btn theek kro
+3. mobile responsive 

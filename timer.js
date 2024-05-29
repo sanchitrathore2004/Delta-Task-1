@@ -6,6 +6,8 @@ console.log(timer.innerHTML);
 
 let timerRed=document.querySelector(".timer-red");
 let timerAqua=document.querySelector(".timer-aqua");
+let rotatee=document.querySelectorAll(".rotatee");
+let aquaSemirico=document.querySelector('.dabba.semirico.aqua span');
 
 let intervalId;
 
@@ -19,13 +21,13 @@ let intervalId;
                 timerAqua.innerHTML = parseInt(timerAqua.innerHTML) - 1;
                 if(timerAqua.innerHTML==0)
                     {
-                        alert("Red Won");
+                        alert("Red WON!!!!!!! Press the Reset Button to Restart the Game");
                     }
             } else if (flag == 0) {
                 timerRed.innerHTML = parseInt(timerRed.innerHTML) - 1;
                 if(timerRed.innerHTML==0)
                     {
-                        alert("aqua won");
+                        alert("Aqua WON!!!!!! Press the Reset Button to Restart the Game");
                     }
             }
         };
@@ -55,6 +57,7 @@ let intervalId;
             arr[19].innerHTML="RICO"
             arr[19].style.backgroundColor="red";
             
+            
             arr[61].innerHTML="TITAN"
             arr[61].style.backgroundColor="aqua";
             arr[57].innerHTML="CANON"
@@ -65,6 +68,7 @@ let intervalId;
             arr[46].style.backgroundColor="aqua";
             arr[47].innerHTML="RICO"
             arr[47].style.backgroundColor="aqua";
+            console.log(rotatee);
     }
 
 

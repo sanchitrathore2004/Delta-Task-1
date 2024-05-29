@@ -30,8 +30,13 @@ function fireBulletFrom(canonElement, direction) {
     bullet.dataset.direction = direction;
 
     const rect = canonElement.getBoundingClientRect();
-    bullet.style.left = `${rect.left + rect.width / 2}px`;
-    bullet.style.top = `${rect.top}px`;
+    if (direction === 'left' || direction === 'right') {
+        bullet.style.left = `${rect.left + rect.width / 2}px`;
+        bullet.style.top = `${rect.top + rect.height / 2}px`;
+    } else if (direction === 'up' || direction === 'down') {
+        bullet.style.left = `${rect.left + rect.width / 2}px`;
+        bullet.style.top = `${rect.top}px`;
+    }
 
     bulletContainer.appendChild(bullet);
     collidables=[];
@@ -82,7 +87,7 @@ function detectCollision(bullet,comingFrom) {
             clearInterval(checkCollision); 
             bullet.remove();
         }
-    }, 50); 
+    }, 10); 
     
 }
 
@@ -209,15 +214,17 @@ function handleCollision(bullet, piece) {
             {
                 bullet.remove();
             }
-            else if(nameTemp[1]=="TITAN")
+            else if(nameTemp[1]=="TITAN" || nameTemp[1]=="titan")
                 {
                     if(nameTemp[2]=="red")
                         {
-                            alert("Aqua WON!!!");
+                            bullet.remove();
+                            alert("Aqua WON!!! Press the Reset Button to Restart the Game");
                         }
                         else if (nameTemp[2]=="aqua")
                             {
-                                alert("Red WON!!!");
+                                bullet.remove();
+                                alert("Red WON!!!!!! Press the Reset Button to Restart the Game");
                             }
                 }
 }
