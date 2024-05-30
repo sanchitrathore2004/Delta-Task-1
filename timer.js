@@ -1,6 +1,6 @@
 export let timer=document.querySelector(".timer");
 import { arr, callFunc, reset } from "./scriptAll.js";
-import { Movement, disableDiv, enableDiv, switchTurn} from "./supportScript.js";
+import { Movement, aquaPieces, colour, disableDiv, enableDiv, redPieces, switchTurn} from "./supportScript.js";
 
 console.log(timer.innerHTML);
 
@@ -59,7 +59,7 @@ let intervalId;
     }
 
 
-    export function resetBtn () {
+    export function resetBtn () { 
         console.log("reset btn clicked");
         for(let i=0;i<arr.length;i++)
             {
@@ -128,5 +128,14 @@ let intervalId;
                             arr[i].removeEventListener("click",Movement);
                         }
                 }
+                for(let i=0;i<arr.length;i++)
+                    {
+                        if(arr[i] && i!=4 && i!=8 && i!=14 && i!=18 && i!=19 && i!=46 && i!=47 && i!=51 && i!=57 &&i!=61)
+                            {
+                                console.log(arr[i]);
+                                enableDiv(arr[i]);
+                            }
+                    }
+                switchTurn();
                 callFunc();
-    }
+            }

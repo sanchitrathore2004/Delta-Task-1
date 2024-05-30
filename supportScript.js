@@ -7,42 +7,50 @@ let aqua=[];
 let resume = document.querySelector(".resume");
 let currTurn=document.querySelector(".currTurn");
 var turn="aqua";
+let mainSign;
 let i=0;
 let j=0;
 let brr=[];
 let ID;
 let html;
 export let classTitle;
-let colour;
+export let colour;
 export let colarr;
 let crr = [];
 let flag=0;
-let redPieces=[];
-let aquaPieces=[];
+export let redPieces=[];
+export let aquaPieces=[];
 let l=0;
 let k=0;
 export function Movement(){
-    for(let i=0;i<arr.length;i++)
+    if(mainSign==false)
         {
-            if(arr[i])
-                {
-                    let name=arr[i].className;
-                    let other=name.split(" ");
-                    let tempColor=other[2];
-                    if(tempColor=="red")
-                        {
-                            redPieces[l]=arr[i];
-                            l++;
-                        }
-                        else if (tempColor=="aqua")
-                            {
-                                aquaPieces[k]=arr[i];
-                                k++;
-                            }
-                }
+            mainSign=true;
         }
+    mainSign=true;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] && isRed(getComputedStyle(arr[i]).backgroundColor)) {
+            let idNumber = arr[i].id.match(/\d+/);
+            if (idNumber) {
+                redPieces.push(Number(idNumber[0]));
+                l++;
+            }
+        }
+    }
+    
     console.log(redPieces);
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] && isAqua(getComputedStyle(arr[i]).backgroundColor)) {
+            
+            let idNumber = arr[i].id.match(/\d+/);
+            if (idNumber) {
+                aquaPieces.push(Number(idNumber[0])); 
+                l++;
+            }
+        }
+    }
     console.log(aquaPieces);
+    console.log(redPieces);
 console.log(posPiece);
 ID=this.id;
 console.log(ID);
@@ -54,13 +62,14 @@ html= this.innerHTML;
 classTitle= this.className;
 colarr=classTitle.split(" ");
 colour=colarr[2];
+console.log(colour);
 if(colour=="red")
     {
         for(let i=0;i<redPieces.length;i++)
             {
-                if(redPieces[i]!=this)
+                if(arr[redPieces[i]] && arr[redPieces[i]]!=this)
                     {
-                        disableDiv(redPieces[i]);
+                        disableDiv(arr[redPieces[i]]);
                     }
             }
     }
@@ -68,13 +77,15 @@ if(colour=="red")
         {
             for(let i=0;i<aquaPieces.length;i++)
                 {
-                    if(aquaPieces[i]!=this)
+                    if(arr[aquaPieces[i]] && arr[aquaPieces[i]]!=this)
                         {
-                            disableDiv(aquaPieces[i]);
+                            disableDiv(arr[aquaPieces[i]]);
                         }
                 }
+                
         }
-console.log(colour);
+        redPieces=[];
+        aquaPieces=[];
 arr[ID].style.backgroundColor="cornsilk";
 console.log(colarr[1]);
 if(colarr[1]=="semirico" || colarr[1]=="rico")
@@ -253,35 +264,46 @@ for (let i=0;i<brr.length;i++) {
 
 
       export function switchTurn(sign) {
-        for(let k=0;k<arr.length;k++)
-            if(arr[k] && arr[k].innerHTML!=="")
-                {
-                    var classy=arr[k].className;
-                    var identify=classy.split(" ");
-                    if(identify[2]=="red")
-                        {
-                            red[i]=k;
-                            i++
-                        }
-                        else if (identify[2]=="aqua")
-                            {
-                                aqua[j]=k;
-                                j++
-                            }
-                }
-                console.log(`red=${red}`);
-                console.log(`aqua=${aqua}`);
-                console.log(turn);
+                for (let i = 0; i < arr.length; i++) {
+        if (arr[i] && isRed(getComputedStyle(arr[i]).backgroundColor)) {
+            // Extract number from the id
+            let idNumber = arr[i].id.match(/\d+/);
+            if (idNumber) {
+                red.push(Number(idNumber[0])); 
+                l++;
+            }
+        }
+    }
+    
+    console.log(redPieces);
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] && isAqua(getComputedStyle(arr[i]).backgroundColor)) {
+            let idNumber = arr[i].id.match(/\d+/);
+            if (idNumber) {
+                aqua.push(Number(idNumber[0])); 
+                l++;
+            }
+        }
+    }
+
+
+    console.log(`red=${red}`);
+    console.log(`aqua=${aqua}`);
+    console.log(turn);
                 if(sign==1)
                     {
                         if(turn!="aqua")
                             {
                                 timerFunction(1);
                                 for (const a of aqua) {
+                                    if(arr[a]){
                                     enableDiv(arr[a]);
                                 }
+                                }
                                 for (const r of red) {
+                                    if(arr[r]){
                                     disableDiv(arr[r]);
+                                }
                                 }
                                 turn = "red";
                             }
@@ -289,10 +311,14 @@ for (let i=0;i<brr.length;i++) {
                                 {
                                     timerFunction(0);
                                     for (const r of red) {
+                                        if(arr[r]){
                                         enableDiv(arr[r]);
                                     }
+                                    }
                                     for (const a of aqua) {
+                                        if(arr[a]){
                                         disableDiv(arr[a]);
+                                    }
                                     }
                                     turn = "aqua";
                                 }
@@ -302,10 +328,14 @@ for (let i=0;i<brr.length;i++) {
                     {
                         timerFunction(1);
                         for (const a of aqua) {
+                            if(arr[a]){
                             enableDiv(arr[a]);
                         }
+                        }
                         for (const r of red) {
+                            if(arr[r]){
                             disableDiv(arr[r]);
+                        }
                         }
                         turn = "red";
                         currTurn.innerHTML="AQUA";
@@ -314,14 +344,20 @@ for (let i=0;i<brr.length;i++) {
                         {
                             timerFunction(0);
                             for (const r of red) {
+                                if(arr[r]){
                                 enableDiv(arr[r]);
                             }
+                            }
                             for (const a of aqua) {
+                                if(arr[a]){
                                 disableDiv(arr[a]);
+                            }
                             }
                             turn = "aqua";
                             currTurn.innerHTML="RED";
                         }
+                        red=[];
+                        aqua=[];
     }
 
 
@@ -338,4 +374,14 @@ for (let i=0;i<brr.length;i++) {
     export function preventInteraction(event) {
         event.stopPropagation();
         event.preventDefault();
+    }
+
+    function isRed(color) {
+        const redColors = ["red", "rgb(255, 0, 0)", "#ff0000"];
+        return redColors.includes(color.toLowerCase());
+    }
+
+    function isAqua(color) {
+        const aquaColors = ["aqua", "rgb(0, 255, 255)", "#00ffff"];
+        return aquaColors.includes(color.toLowerCase());
     }
