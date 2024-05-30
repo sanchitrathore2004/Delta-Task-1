@@ -221,6 +221,46 @@
     cursor: pointer;
     overflow: auto;
 }
+.history{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: bisque;
+    margin-left: 660px;
+    height: 200px;
+    margin-top: -155px;
+    width: 500px;
+    border: 3px solid black;
+    border-radius: 5px;
+    overflow: auto;
+}
+.heading{
+    background-color: bisque;
+    border: 1px solid black;
+    text-align: center;
+}
+.elsething{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+    background-color: bisque;
+}
+.name-piece,
+.from,
+.to{
+    text-align: center;
+    background-color: bisque;
+}
+.bgcolor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: bisque;
+    border: 1px solid black;
+
+}
 .rotation{
     display: flex;
     justify-content: center;
@@ -288,6 +328,38 @@
 }
 .rico{
     visibility: visible;
+}
+.directional-bullet{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    border: 2px solid black;
+    background-color: bisque;
+    margin-left: 660px;
+    margin-top: -600px;
+    width: 400px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+    visibility: hidden;
+}
+.normal,
+.p-45,
+.n-45,
+.right-bullet,
+.left-bullet{
+    background-color: bisque;
+    text-align: center;
+    cursor: pointer;
+    transition: border 0.5s, background-color 0.5s ease;
+}
+.normal:hover,
+.p-45:hover,
+.n-45:hover,
+.right-bullet:hover,
+.left-bullet:hover{
+    border: 1px solid black;
+    background-color: darkkhaki;
 }
 @media screen and (min-width:320px) and (max-width:426px){
     .container{
@@ -377,7 +449,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-left: 2px;
+        margin-left: 20px;
         margin-top: 780px;
         width: 1100px;
     }
@@ -390,12 +462,16 @@
     .btns{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        margin-top: 900px;
-        margin-left: 378px;
+        margin-top: 874px;
+        margin-left: 578px;
+    }
+    .history{
+        margin-top: 180px;
+        margin-left: 300px;
     }
     .turn{
-        margin-top: 1250px;
-        margin-left: 510px;
+        margin-top: 1220px;
+        margin-left: 710px;
         font-size: xx-large;
         width: 100px;
     }
@@ -415,13 +491,54 @@
     }
 }
 
+@keyframes fireBulletP45 {
+    0% {
+        transform: translateY(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-160vh);
+        transform: translateX(-160vh);
+        opacity: 0;
+    }
+}
+@keyframes fireBulletN45 {
+    0% {
+        transform: translateY(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(160vh);
+        transform: translateX(160vh);
+        opacity: 0;
+    }
+}
+.bullet-p45 {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    border-radius: 50%;
+    animation: fireBulletP45 4s forwards;
+}
+.bullet-N45 {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    border-radius: 50%;
+    animation: fireBulletN45 4s forwards;
+}
+
 .bullet-up {
     position: absolute;
     width: 10px;
     height: 10px;
     background-color: black;
     border-radius: 50%;
-    animation: fireBulletUp 2s forwards;
+    animation: fireBulletUp 4s forwards;
 }
 
 @keyframes fireBulletDown {
@@ -441,7 +558,7 @@
     height: 10px;
     background-color: black;
     border-radius: 50%;
-    animation: fireBulletDown 2s forwards;
+    animation: fireBulletDown 4s forwards;
 }
 
 @keyframes fireBulletLeft {
@@ -473,7 +590,7 @@
     height: 10px;
     background-color: black;
     border-radius: 50%;
-    animation: fireBulletLeft 2s forwards;
+    animation: fireBulletLeft 4s forwards;
 }
 
 .bullet-right {
@@ -482,5 +599,5 @@
     height: 10px;
     background-color: black;
     border-radius: 50%;
-    animation: fireBulletRight 2s forwards;
+    animation: fireBulletRight 4s forwards;
 }

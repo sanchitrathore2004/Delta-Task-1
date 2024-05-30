@@ -1,6 +1,6 @@
 export let timer=document.querySelector(".timer");
 import { arr, callFunc, reset } from "./scriptAll.js";
-import { Movement, aquaPieces, colour, disableDiv, enableDiv, redPieces, switchTurn} from "./supportScript.js";
+import { Movement, aquaPieces, colour, disableDiv, enableDiv, movePieceFrom, movePieceTo, namePiece, redPieces, switchTurn} from "./supportScript.js";
 
 console.log(timer.innerHTML);
 
@@ -136,6 +136,9 @@ let intervalId;
                                 enableDiv(arr[i]);
                             }
                     }
+                    movePieceFrom.innerHTML="FROM";
+                    movePieceTo.innerHTML="TO";
+                    namePiece.innerHTML="PIECE NAME";
                 switchTurn();
                 callFunc();
             }

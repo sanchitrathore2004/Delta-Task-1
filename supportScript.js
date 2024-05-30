@@ -1,17 +1,22 @@
-import { bullet } from "./bullet.js";
+import { bullet, findAngle } from "./bullet.js";
 import { arr, callFunc, posPiece, rotation, rotateObjLeft, rotateObjRight, reset, sign } from "./scriptAll.js";
 import { resetBtn, resumeBtn, timerFunction } from "./timer.js";
 let finalRotation;
+export let movePieceFrom=document.querySelector(".from");
+export let namePiece=document.querySelector(".name-piece");
+export let movePieceTo=document.querySelector(".to");
 let red=[];
 let aqua=[];
 let resume = document.querySelector(".resume");
 let currTurn=document.querySelector(".currTurn");
 var turn="aqua";
 let mainSign;
+let u=1;
 let i=0;
 let j=0;
 let brr=[];
 let ID;
+let IDD;
 let html;
 export let classTitle;
 export let colour;
@@ -22,6 +27,14 @@ export let redPieces=[];
 export let aquaPieces=[];
 let l=0;
 let k=0;
+let p=0;
+let q=0;
+let s=0;
+let t=0;
+let aquaMoveFrom=[];
+let redMoveFrom=[];
+let aquaMoveTo=[];
+let redMoveTo=[];
 export function Movement(){
     if(mainSign==false)
         {
@@ -62,6 +75,32 @@ html= this.innerHTML;
 classTitle= this.className;
 colarr=classTitle.split(" ");
 colour=colarr[2];
+if(colour=="red")
+    {
+        redMoveFrom[p]=ID;
+        p++;
+        let moveFrom=document.createElement('div');
+        moveFrom.innerHTML=`box${ID}`;
+        moveFrom.classList.add("bgcolor");
+        movePieceFrom.appendChild(moveFrom);
+    }
+    else if(colour=="aqua")
+        {
+            aquaMoveFrom[q]=ID;
+            q++;
+            let moveFrom=document.createElement('div');
+            moveFrom.innerHTML=`box${ID}`;
+            moveFrom.classList.add("bgcolor");
+            movePieceFrom.appendChild(moveFrom);   
+        }
+        console.log(aquaMoveFrom,redMoveFrom);
+        let moveName=document.createElement('div');
+        moveName.innerHTML=`${u}) ${colarr[1]} ${colour}`;
+        moveName.classList.add("bgcolor");
+        u++;
+        namePiece.appendChild(moveName);
+        // redMoveFrom=[];
+        // aquaMoveFrom=[];
 console.log(colour);
 if(colour=="red")
     {
@@ -201,12 +240,33 @@ for (let i=0;i<brr.length;i++) {
         this.className=classTitle;
         let colours=classTitle.split(" ");
         let colourr=colours[2];
+        IDD=this.id;
+        if(colourr=="aqua")
+            {
+                aquaMoveTo[s]=IDD;
+                s++;
+                let pieceTO=document.createElement('div');
+                pieceTO.innerHTML=IDD;
+                pieceTO.classList.add("bgcolor");
+                movePieceTo.appendChild(pieceTO);
+            }
+            else if(colourr=="red")
+                {
+                    redMoveTo[t]=IDD;
+                    t++;
+                    let pieceTO=document.createElement('div');
+                    pieceTO.innerHTML=IDD;
+                    pieceTO.classList.add("bgcolor");
+                    movePieceTo.appendChild(pieceTO);
+                }
+                console.log(aquaMoveTo,redMoveTo);
+                // aquaMoveTo=[];
+                // redMoveTo=[];
         console.log(this.className);
         removeTankListener(this);
         callFunc();
         switchTurn();
         bullet(colourr);
-        
     }
 
 
@@ -241,9 +301,17 @@ for (let i=0;i<brr.length;i++) {
             if (this.innerHTML == "ANTICLOCKWISE") {
                 console.log("got anti");
                 currentRotation -= 90;
+                let displayRotation=document.createElement('div');
+                displayRotation.innerHTML=`${currentRotation} DEGREE`;
+                displayRotation.classList.add("bgcolor");
+                movePieceTo.appendChild(displayRotation);
             } else if (this.innerHTML == "CLOCKWISE") {
                 console.log("got clockwise");
                 currentRotation = currentRotation+90;
+                let displayRotation=document.createElement('div');
+                displayRotation.innerHTML=`${currentRotation} DEGREE`;
+                displayRotation.classList.add("bgcolor");
+                movePieceTo.appendChild(displayRotation);
             }
         
             rotationElement.style.transform = `rotate(${currentRotation}deg)`;

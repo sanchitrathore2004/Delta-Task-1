@@ -1,9 +1,14 @@
 import { arr } from "./scriptAll.js";
+import { Movement } from "./supportScript.js";
 
 let finalAngleOfPeice;
 let collidables=[];
 let flag;
 let j=0;
+let hitSound = document.querySelector("#hit-sound");
+let collideSound=document.querySelector("#collide-sound");
+let semiHit=document.querySelector("#semi-hit");
+let check=true;
 
 export function bullet(colourr) {
     if (colourr == "aqua") {
@@ -24,6 +29,17 @@ export function bullet(colourr) {
 }
 
 function fireBulletFrom(canonElement, direction) {
+    console.log("bhaiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii", canonElement);
+    if(canonElement.classList.contains('tank') || canonElement.classList.contains('TANK'))
+        {
+            console.log("holaaaaaaaaaa");
+            check=false;
+        }
+        if(check);
+            {
+                hitSound.play();
+            }
+            check=true;
     const bulletContainer = document.getElementById('bullet-container');
     const bullet = document.createElement('div');
     bullet.classList.add(`bullet-${direction}`);
@@ -74,6 +90,7 @@ function detectCollision(bullet,comingFrom) {
                 bulletRect.left < pieceRect.right &&
                 bulletRect.right > pieceRect.left) {
                 // Collision detected
+                // collideSound.play();
                 bullet.remove();
                 handleCollision(bullet, piece);
                 clearInterval(checkCollision); 
@@ -95,6 +112,9 @@ function handleCollision(bullet, piece) {
     flag=1;
     console.log('Collision detected with', piece);
     var name = piece.className;
+    var ID=piece.id;
+    var tempID=ID.slice(3,5);
+    console.log(tempID);
     var nameTemp = name.split(" ");
     var bulletDirection = bullet.dataset.direction;
     console.log(bulletDirection);
@@ -114,11 +134,19 @@ function handleCollision(bullet, piece) {
                 }
                 else if(A==-135 || A==135)
                     {
+                        semiHit.play();
+                        arr[tempID].innerHTML="";
+                        arr[tempID].style.backgroundColor="cornsilk";
+                        arr[tempID].removeEventListener("click", Movement);
                         bullet.remove();
                     }
         } else if (bulletDirection == "down") {
             if(A==-45 || A==45)
                 {
+                    semiHit.play();
+                    arr[tempID].innerHTML="";
+                        arr[tempID].style.backgroundColor="cornsilk";
+                        arr[tempID].removeEventListener("click", Movement);
                     bullet.remove();
                 }
                 else if(A==-135)
@@ -136,6 +164,10 @@ function handleCollision(bullet, piece) {
                 }
                 else if(A==45)
                     {
+                        semiHit.play();
+                        arr[tempID].innerHTML="";
+                        arr[tempID].style.backgroundColor="cornsilk";
+                        arr[tempID].removeEventListener("click", Movement);
                         bullet.remove();
                     }
                     else if(A==-135)
@@ -144,6 +176,10 @@ function handleCollision(bullet, piece) {
                         }
                         else if(A==135)
                             {
+                                semiHit.play();
+                                arr[tempID].innerHTML="";
+                        arr[tempID].style.backgroundColor="cornsilk";
+                        arr[tempID].removeEventListener("click", Movement);
                                 bullet.remove();
                             }
         } else if (bulletDirection == "right") {
@@ -153,6 +189,10 @@ function handleCollision(bullet, piece) {
                 }
                 else if(A==45)
                     {
+                        semiHit.play();
+                        arr[tempID].innerHTML="";
+                        arr[tempID].style.backgroundColor="cornsilk";
+                        arr[tempID].removeEventListener("click", Movement);
                         bullet.remove();
                     }
                     else if(A==-135)
@@ -161,6 +201,10 @@ function handleCollision(bullet, piece) {
                         }
                         else if(A==135)
                             {
+                                semiHit.play();
+                                arr[tempID].innerHTML="";
+                        arr[tempID].style.backgroundColor="cornsilk";
+                        arr[tempID].removeEventListener("click", Movement);
                                 bullet.remove();
                             }
         }
@@ -210,9 +254,16 @@ function handleCollision(bullet, piece) {
                     }
         }
         }
-        else if (nameTemp[1]=="TANK")
+        else if (nameTemp[1]=="TANK" || nameTemp[1]=="tank")
             {
-                bullet.remove();
+                if(nameTemp[2]=="aqua" && bulletDirection=="up")
+                    {
+                        fireBulletFrom(piece,'up');
+                    }
+                    else if (nameTemp[2]=="red" && bulletDirection=="down")
+                        {
+                            fireBulletFrom(piece,'down');
+                        }
             }
             else if(nameTemp[1]=="TITAN" || nameTemp[1]=="titan")
                 {
@@ -229,7 +280,7 @@ function handleCollision(bullet, piece) {
                 }
 }
 
-function findAngle(piece) {
+export function findAngle(piece) {
     console.log(piece);
     let span = piece.querySelector(".rotatee");
     console.log(span);

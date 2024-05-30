@@ -12,3 +12,14 @@
 
 canon mistake kr rha h   ------ done 
 doosra dabane se pehla band ----- doneeeeee
+
+
+hacker mode 
+
+semirico khatam agr ulti side lga to ---- done
+undo redo ------- 
+history of moves ko show kro screen pr aur game khatam hone pr local storage me save kro   ----- done
+sound effect lgao bhaii ----- done
+tank ek side se bullet pass krenge ----- done
+directional bullet ----- 
+swap rico ---------
