@@ -1,4 +1,4 @@
-import { checkBulletDirection } from "./hackerMode.js";
+import { checkBulletDirection, undo } from "./hackerMode.js";
 import { Movement, switchTurn} from "./supportScript.js";
 import { timer, resetBtn, pauseBtn, resumeBtn } from "./timer.js"
 
@@ -31,9 +31,12 @@ reset.addEventListener("click", resetBtn);
 
 let pause = document.querySelector(".pause");
 let resume = document.querySelector(".resume");
+let undoBtn=document.querySelector(".undo");
 
 pause.addEventListener("click", pauseBtn);
 resume.addEventListener("click", resumeBtn);
+undoBtn.addEventListener("click", undo);
+
 
 export let brr= [];
 export function callFunc(){

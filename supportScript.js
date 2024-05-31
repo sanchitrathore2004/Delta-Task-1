@@ -15,7 +15,7 @@ let u=1;
 let i=0;
 let j=0;
 let brr=[];
-let ID;
+export let ID;
 let IDD;
 let html;
 export let classTitle;
@@ -25,16 +25,18 @@ let crr = [];
 let flag=0;
 export let redPieces=[];
 export let aquaPieces=[];
+let v=0;
 let l=0;
 let k=0;
 let p=0;
 let q=0;
 let s=0;
 let t=0;
-let aquaMoveFrom=[];
-let redMoveFrom=[];
-let aquaMoveTo=[];
-let redMoveTo=[];
+export let moveNameArray=[];
+export let aquaMoveFrom=[];
+export let redMoveFrom=[];
+export let aquaMoveTo=[];
+export let redMoveTo=[];
 export function Movement(){
     if(mainSign==false)
         {
@@ -93,13 +95,16 @@ if(colour=="red")
             moveFrom.classList.add("bgcolor");
             movePieceFrom.appendChild(moveFrom);   
         }
-        console.log(aquaMoveFrom,redMoveFrom);
+        console.log("FROM",aquaMoveFrom,redMoveFrom);
         let moveName=document.createElement('div');
         if(resetHua)
             {
                 u=1;
             }
             // resetHua=false;
+            moveNameArray[v]=`${colarr[1]} ${colour}`;
+            v++;
+            console.log("NAME",moveNameArray);
         moveName.innerHTML=`${u}) ${colarr[1]} ${colour}`;
         moveName.classList.add("bgcolor");
         u++;
@@ -138,6 +143,17 @@ if(colarr[1]=="semirico" || colarr[1]=="rico")
         rotateObjLeft.addEventListener("click", rotate);
         rotateObjRight.addEventListener("click", rotate);
         flag=1;
+        // if(colarr[1]=="rico")
+        //     {
+        //         for(let i=0;i<arr.length;i++)
+        //             {
+        //                 if(arr[i] && arr[i].innerHTML!="" && arr[i].innerHTML!="TITAN" && arr[i].innerHTML!="titan"){
+        //                     enableDiv(arr[i]);
+        //                     arr[i].removeEventListener("click", Movement);
+        //                     arr[i].addEventListener("click", swapFunction);
+        //                 }
+        //             }
+        //     }
     }
     if(colarr[1]=="CANON")
         {
@@ -218,7 +234,7 @@ for (let i=0;i<brr.length;i++) {
 }
  }
 }
- function handleTankClick () {
+ export function handleTankClick () {
      console.log(brr);
      this.innerHTML = html;
      if(flag=1)
@@ -264,7 +280,7 @@ for (let i=0;i<brr.length;i++) {
                     pieceTO.classList.add("bgcolor");
                     movePieceTo.appendChild(pieceTO);
                 }
-                console.log(aquaMoveTo,redMoveTo);
+                console.log("TO",aquaMoveTo,redMoveTo);
                 // aquaMoveTo=[];
                 // redMoveTo=[];
         console.log(this.className);
@@ -337,67 +353,35 @@ for (let i=0;i<brr.length;i++) {
 
 
       export function switchTurn(sign) {
-                for (let i = 0; i < arr.length; i++) {
-        if (arr[i] && isRed(getComputedStyle(arr[i]).backgroundColor)) {
-            // Extract number from the id
-            let idNumber = arr[i].id.match(/\d+/);
-            if (idNumber) {
-                red.push(Number(idNumber[0])); 
-                l++;
-            }
-        }
+        for (let i = 0; i < arr.length; i++) {
+if (arr[i] && isRed(getComputedStyle(arr[i]).backgroundColor)) {
+    // Extract number from the id
+    let idNumber = arr[i].id.match(/\d+/);
+    if (idNumber) {
+        red.push(Number(idNumber[0])); 
+        l++;
     }
-    
-    console.log(redPieces);
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] && isAqua(getComputedStyle(arr[i]).backgroundColor)) {
-            let idNumber = arr[i].id.match(/\d+/);
-            if (idNumber) {
-                aqua.push(Number(idNumber[0])); 
-                l++;
-            }
-        }
+}
+}
+
+console.log(redPieces);
+for (let i = 0; i < arr.length; i++) {
+if (arr[i] && isAqua(getComputedStyle(arr[i]).backgroundColor)) {
+    let idNumber = arr[i].id.match(/\d+/);
+    if (idNumber) {
+        aqua.push(Number(idNumber[0])); 
+        l++;
     }
+}
+}
 
 
-    console.log(`red=${red}`);
-    console.log(`aqua=${aqua}`);
-    console.log(turn);
-                if(sign==1)
-                    {
-                        if(turn!="aqua")
-                            {
-                                timerFunction(1);
-                                for (const a of aqua) {
-                                    if(arr[a]){
-                                    enableDiv(arr[a]);
-                                }
-                                }
-                                for (const r of red) {
-                                    if(arr[r]){
-                                    disableDiv(arr[r]);
-                                }
-                                }
-                                turn = "red";
-                            }
-                            else if (turn != "red")
-                                {
-                                    timerFunction(0);
-                                    for (const r of red) {
-                                        if(arr[r]){
-                                        enableDiv(arr[r]);
-                                    }
-                                    }
-                                    for (const a of aqua) {
-                                        if(arr[a]){
-                                        disableDiv(arr[a]);
-                                    }
-                                    }
-                                    turn = "aqua";
-                                }
-                                sign=0;
-                    }
-                else if(turn=="aqua")
+console.log(`red=${red}`);
+console.log(`aqua=${aqua}`);
+console.log(turn);
+        if(sign==1)
+            {
+                if(turn!="aqua")
                     {
                         timerFunction(1);
                         for (const a of aqua) {
@@ -411,9 +395,8 @@ for (let i=0;i<brr.length;i++) {
                         }
                         }
                         turn = "red";
-                        currTurn.innerHTML="AQUA";
                     }
-                    else if (turn == "red")
+                    else if (turn != "red")
                         {
                             timerFunction(0);
                             for (const r of red) {
@@ -427,11 +410,45 @@ for (let i=0;i<brr.length;i++) {
                             }
                             }
                             turn = "aqua";
-                            currTurn.innerHTML="RED";
                         }
-                        red=[];
-                        aqua=[];
-    }
+                        sign=0;
+            }
+        else if(turn=="aqua")
+            {
+                timerFunction(1);
+                for (const a of aqua) {
+                    if(arr[a]){
+                    enableDiv(arr[a]);
+                }
+                }
+                for (const r of red) {
+                    if(arr[r]){
+                    disableDiv(arr[r]);
+                }
+                }
+                turn = "red";
+                currTurn.innerHTML="AQUA";
+            }
+            else if (turn == "red")
+                {
+                    timerFunction(0);
+                    for (const r of red) {
+                        if(arr[r]){
+                        enableDiv(arr[r]);
+                    }
+                    }
+                    for (const a of aqua) {
+                        if(arr[a]){
+                        disableDiv(arr[a]);
+                    }
+                    }
+                    turn = "aqua";
+                    currTurn.innerHTML="RED";
+                }
+                red=[];
+                aqua=[];
+}
+
 
 
     export function disableDiv(div) {
