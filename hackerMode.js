@@ -4,6 +4,16 @@ import { ID, Movement, aquaMoveFrom, aquaMoveTo, enableDiv, handleTankClick, mov
 
 let p45=document.querySelector(".p-45");
 let pushPiece;
+let nameForRedo=[];
+let t=0;
+let redRedoFrom=[];
+let redRedoTo=[];
+let aquaRedoFrom=[];
+let aquaRedoTo=[];
+let u=0;
+let v=0;
+let w=0;
+let x=0;
 
 export function checkBulletDirection () {
     for(let i=0;i<arr.length;i++)
@@ -23,12 +33,16 @@ export function undo () {
     console.log(lastPiece);
     let NameOfPiece=lastPiece.split(" ")[0];
     let ColorOfPiece=lastPiece.split(" ")[1];
+    nameForRedo[t]=`${NameOfPiece} ${ColorOfPiece}`;
+    t++;
     moveNameArray.pop();
     if(ColorOfPiece=="red")
         {
             if(NameOfPiece!="semirico" && NameOfPiece!="rico")
                 {
                     let backTo=redMoveFrom.slice(-1)[0];
+                    redRedoFrom[u]=backTo;
+                    u++;
                     arr[backTo].innerHTML=NameOfPiece;
                     arr[backTo].style.backgroundColor="red";
                     enableDiv(arr[backTo]);
@@ -36,6 +50,8 @@ export function undo () {
                     let emptyThisTemp=redMoveTo.slice(-1)[0];
                     let emptyThis=emptyThisTemp.slice(3,5);
                     emptyThis=parseInt(emptyThis)+0;
+                    redRedoTo[v]=emptyThis;
+                    v++
                     arr[emptyThis].innerHTML="";
                     arr[emptyThis].style.backgroundColor="cornsilk";
                     enableDiv(arr[emptyThis]);
@@ -46,6 +62,8 @@ export function undo () {
                 }
                 else{
                     let backTo=redMoveFrom.slice(-1)[0];
+                    redRedoFrom[u]=backTo;
+                    u++;
                     let newSpan=document.createElement('span');
                     if(NameOfPiece=="semirico"){
                         newSpan.innerHTML="SEMIRICO";
@@ -63,6 +81,8 @@ export function undo () {
                     let emptyThisTemp=redMoveTo.slice(-1)[0];
                     let emptyThis=emptyThisTemp.slice(3,5);
                     emptyThis=parseInt(emptyThis)+0;
+                    redRedoTo[v]=emptyThis;
+                    v++
                     arr[emptyThis].innerHTML="";
                     arr[emptyThis].style.backgroundColor="cornsilk";
                     enableDiv(arr[emptyThis]);
@@ -79,11 +99,15 @@ export function undo () {
                         let backTo=aquaMoveFrom.slice(-1)[0];
                         arr[backTo].innerHTML=NameOfPiece;
                         arr[backTo].style.backgroundColor="aqua";
+                        aquaRedoFrom[w]=backTo;
+                        w++;
                         enableDiv(arr[backTo]);
                         console.log(arr[backTo]);
                         let emptyThisTemp=aquaMoveTo.slice(-1)[0];
                         let emptyThis=emptyThisTemp.slice(3,5);
                         emptyThis=parseInt(emptyThis)+0;
+                        aquaRedoTo[x]=emptyThis;
+                        x++;
                         console.log(emptyThis);
                         arr[emptyThis].innerHTML="";
                         arr[emptyThis].style.backgroundColor="cornsilk";
@@ -95,6 +119,8 @@ export function undo () {
                     }
                     else{
                         let backTo=aquaMoveFrom.slice(-1)[0];
+                        aquaRedoFrom[w]=backTo;
+                        w++;
                     let newSpan=document.createElement('span');
                     if(NameOfPiece=="semirico"){
                         newSpan.innerHTML="SEMIRICO";
@@ -112,6 +138,8 @@ export function undo () {
                     let emptyThisTemp=aquaMoveTo.slice(-1)[0];
                     let emptyThis=emptyThisTemp.slice(3,5);
                     emptyThis=parseInt(emptyThis)+0;
+                    aquaRedoTo[x]=emptyThis;
+                        x++;
                     arr[emptyThis].innerHTML="";
                     arr[emptyThis].style.backgroundColor="cornsilk";
                     enableDiv(arr[emptyThis]);
@@ -120,6 +148,27 @@ export function undo () {
                     aquaMoveFrom.pop();
                     aquaMoveTo.pop();
                     }
+            }
+}
+
+export function redo () {
+    console.log(nameForRedo);
+    console.log(redRedoFrom,redRedoTo);
+    console.log(aquaRedoFrom,aquaRedoTo);
+    let nameOfReq=nameForRedo.slice(-1)[0];
+    if(nameOfReq.split(" ")[2]=="red")
+        {
+            arr[redRedoFrom.slice(-1)[0]].innerHTML="";
+            arr[redRedoFrom.slice(-1)[0]].style.backgroundColor="cornsilk";
+            arr[redRedoTo.slice(-1)[0]].innerHTML=nameForRedo.slice(-1)[0].split(" ")[0];
+            arr[redRedoTo.slice(-1)[0]].style.backgroundColor=nameForRedo.slice(-1)[0].split(" ")[1];
+        }
+        else if(nameOfReq.split(" ")[2]=="aqua")
+            {
+                arr[aquaRedoFrom.slice(-1)[0]].innerHTML="";
+                arr[aquaRedoFrom.slice(-1)[0]].style.backgroundColor="cornsilk";
+                arr[aquaRedoTo.slice(-1)[0]].innerHTML=nameForRedo.slice(-1)[0].split(" ")[0];
+                arr[aquaRedoTo.slice(-1)[0]].style.backgroundColor=nameForRedo.slice(-1)[0].split(" ")[1];
             }
 }
 

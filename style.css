@@ -50,7 +50,7 @@
     align-items: center;
     width: 200px;
     height: 50px;
-    border: 1px solid black;
+    border: 3px solid black;
     border-radius: 2px;
     margin-top: 20px;
     font-size: x-large;
@@ -90,8 +90,9 @@
     position: absolute;
     margin-left: 910px;
     font-size: xx-large;
-    font-weight: bold;
+    font-weight: bolder;
     margin-top: 40px;
+    font-family: 'Times New Roman', Times, serif;
 }
 .currTurn{
     border: 3px solid black;
@@ -99,6 +100,8 @@
     font-size: x-large;
     text-align: center;
     transition: background-color 0.5s ease;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bolder
 }
 .currTurn:hover{
     background-color: cornsilk;
@@ -378,6 +381,30 @@
     text-align: center;
     cursor: pointer;
     transition: border 0.5s, background-color 0.5s ease;
+}
+.start-game{
+    width: 600px;
+    height: 200px;
+    background-color: rgb(4, 4, 29);
+    margin-top: 540px;
+    margin-left: -600px;
+    position: absolute;
+    visibility: hidden;
+}
+.texttostart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(4, 4, 29);
+    color: white;
+    height: 200px;
+    font-size: xx-large;
+    cursor: pointer;
+    transition: color 0.5s ease;
+    visibility: hidden;
+}
+.texttostart:hover{
+    color: aqua;
 }
 .normal:hover,
 .p-45:hover,

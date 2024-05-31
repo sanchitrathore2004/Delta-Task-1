@@ -1,8 +1,10 @@
 import { bullet, findAngle } from "./bullet.js";
 import { arr, callFunc, posPiece, rotation, rotateObjLeft, rotateObjRight, reset, sign } from "./scriptAll.js";
-import { resetBtn, resetHua, resumeBtn, timerFunction } from "./timer.js";
+import { resetHua, resumeBtn, timerFunction } from "./timer.js";
 let finalRotation;
 export let movePieceFrom=document.querySelector(".from");
+let clickSound=document.querySelector("#click-sound");
+let jumpSound=document.querySelector("#jump-sound");
 export let namePiece=document.querySelector(".name-piece");
 export let movePieceTo=document.querySelector(".to");
 let red=[];
@@ -38,6 +40,7 @@ export let redMoveFrom=[];
 export let aquaMoveTo=[];
 export let redMoveTo=[];
 export function Movement(){
+    clickSound.play();
     if(mainSign==false)
         {
             mainSign=true;
@@ -235,6 +238,7 @@ for (let i=0;i<brr.length;i++) {
  }
 }
  export function handleTankClick () {
+    jumpSound.play();
      console.log(brr);
      this.innerHTML = html;
      if(flag=1)
