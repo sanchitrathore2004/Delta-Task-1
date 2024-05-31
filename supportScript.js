@@ -1,6 +1,6 @@
 import { bullet, findAngle } from "./bullet.js";
 import { arr, callFunc, posPiece, rotation, rotateObjLeft, rotateObjRight, reset, sign } from "./scriptAll.js";
-import { resetBtn, resumeBtn, timerFunction } from "./timer.js";
+import { resetBtn, resetHua, resumeBtn, timerFunction } from "./timer.js";
 let finalRotation;
 export let movePieceFrom=document.querySelector(".from");
 export let namePiece=document.querySelector(".name-piece");
@@ -95,6 +95,11 @@ if(colour=="red")
         }
         console.log(aquaMoveFrom,redMoveFrom);
         let moveName=document.createElement('div');
+        if(resetHua)
+            {
+                u=1;
+            }
+            // resetHua=false;
         moveName.innerHTML=`${u}) ${colarr[1]} ${colour}`;
         moveName.classList.add("bgcolor");
         u++;

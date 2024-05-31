@@ -8,14 +8,21 @@ let j=0;
 let hitSound = document.querySelector("#hit-sound");
 let collideSound=document.querySelector("#collide-sound");
 let semiHit=document.querySelector("#semi-hit");
+let gameOverSound=document.querySelector("#game-over");
 let check=true;
-
-export function bullet(colourr) {
+export function bullet(colourr,directionOfBullet) {
     if (colourr == "aqua") {
         for (let i = 57; i <= 64; i++) {
             if (arr[i].innerHTML == "CANON") {
-                fireBulletFrom(arr[i], 'up');
-                break;
+                if(directionOfBullet)
+                    {
+                        fireBulletFrom(arr[i], 'p45');
+                        break;
+                    }
+                    else{
+                        fireBulletFrom(arr[i], 'up');
+                        break;
+                    }
             }
         }
     } else if (colourr == "red") {
@@ -28,8 +35,7 @@ export function bullet(colourr) {
     }
 }
 
-function fireBulletFrom(canonElement, direction) {
-    console.log("bhaiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii", canonElement);
+export function fireBulletFrom(canonElement, direction) {
     if(canonElement.classList.contains('tank') || canonElement.classList.contains('TANK'))
         {
             console.log("holaaaaaaaaaa");
@@ -269,11 +275,13 @@ function handleCollision(bullet, piece) {
                 {
                     if(nameTemp[2]=="red")
                         {
+                            gameOverSound.play();
                             bullet.remove();
                             alert("Aqua WON!!! Press the Reset Button to Restart the Game");
                         }
                         else if (nameTemp[2]=="aqua")
                             {
+                                gameOverSound.play();
                                 bullet.remove();
                                 alert("Red WON!!!!!! Press the Reset Button to Restart the Game");
                             }

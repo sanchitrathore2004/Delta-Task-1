@@ -7,6 +7,7 @@ console.log(timer.innerHTML);
 let timerRed=document.querySelector(".timer-red");
 let timerAqua=document.querySelector(".timer-aqua");
 let aquaSemirico=document.querySelector("#aquasemirico");
+export var resetHua=false;
 
 let intervalId;
 
@@ -139,6 +140,7 @@ let intervalId;
                     movePieceFrom.innerHTML="FROM";
                     movePieceTo.innerHTML="TO";
                     namePiece.innerHTML="PIECE NAME";
+                    resetHua=true;
                 switchTurn();
                 callFunc();
             }

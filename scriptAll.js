@@ -1,3 +1,4 @@
+import { checkBulletDirection } from "./hackerMode.js";
 import { Movement, switchTurn} from "./supportScript.js";
 import { timer, resetBtn, pauseBtn, resumeBtn } from "./timer.js"
 
@@ -47,4 +48,5 @@ for(let i=0;i<=64;i++)
     }
 }
 callFunc();
+// checkBulletDirection();
 switchTurn(); 
