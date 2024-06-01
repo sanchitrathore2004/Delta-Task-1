@@ -301,6 +301,33 @@ for (let i=0;i<brr.length;i++) {
       let rotationAngle=0;
 
       function rotate () {
+        if(colour=="red")
+            {
+                redMoveFrom[p]=ID;
+                p++;
+                let moveFrom=document.createElement('div');
+                moveFrom.innerHTML=`box${ID}`;
+                moveFrom.classList.add("bgcolor");
+                movePieceFrom.appendChild(moveFrom);
+            }
+            else if(colour=="aqua")
+                {
+                    aquaMoveFrom[q]=ID;
+                    q++;
+                    let moveFrom=document.createElement('div');
+                    moveFrom.innerHTML=`box${ID}`;
+                    moveFrom.classList.add("bgcolor");
+                    movePieceFrom.appendChild(moveFrom);   
+                }
+                console.log("FROM",aquaMoveFrom,redMoveFrom);
+                let moveName=document.createElement('div');
+                    moveNameArray[v]=`${colarr[1]} ${colour}`;
+                    v++;
+                    console.log("NAME",moveNameArray);
+                moveName.innerHTML=`${u}) ${colarr[1]} ${colour}`;
+                moveName.classList.add("bgcolor");
+                u++;
+                namePiece.appendChild(moveName);
             let rotationElement = arr[ID].querySelector(".rotatee");
             let currentRotation = rotationElement.dataset.rotationAngle ? parseInt(rotationElement.dataset.rotationAngle) : 0;
         
