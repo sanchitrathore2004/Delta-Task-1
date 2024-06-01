@@ -27,10 +27,6 @@ export let rotateObjRight = document.querySelector(".right");
 let startBtn=document.querySelector(".texttostart");
 let overlay=document.querySelector(".start-game");
 
-startBtn.addEventListener("click", () => {
-    overlay.style.visibility="hidden";
-})
-
 export let reset = document.querySelector(".reset");
 console.log(reset);
 reset.addEventListener("click", () => {

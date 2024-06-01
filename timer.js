@@ -1,6 +1,8 @@
 export let timer=document.querySelector(".timer");
+import { gameKhatam } from "./bullet.js";
 import { arr, callFunc, reset } from "./scriptAll.js";
 import { Movement, aquaPieces, colour, disableDiv, enableDiv, movePieceFrom, movePieceTo, namePiece, redPieces, switchTurn} from "./supportScript.js";
+
 
 console.log(timer.innerHTML);
 
@@ -21,13 +23,38 @@ let intervalId;
                 timerAqua.innerHTML = parseInt(timerAqua.innerHTML) - 1;
                 if(timerAqua.innerHTML==0)
                     {
-                        alert("Red WON!!!!!!! Press the Reset Button to Restart the Game");
+                        console.log("red jeet gya");
+                        gameKhatam.classList.add("game-over");
+                        let newDiv = document.createElement('div');
+                        newDiv.innerHTML=`HURRAYYYY! RED WON`;
+                        newDiv.classList.add("texttostart");
+                        let resetDiv = document.createElement('div');
+                        resetDiv.innerHTML="PLAY AGAIN";
+                        resetDiv.classList.add("texttostart");
+                        gameKhatam.appendChild(newDiv);
+                        gameKhatam.appendChild(resetDiv);
+                        resetDiv.addEventListener("click", () => {
+                            location.reload();
+                        });
+                        flag=3;
                     }
             } else if (flag == 0) {
                 timerRed.innerHTML = parseInt(timerRed.innerHTML) - 1;
                 if(timerRed.innerHTML==0)
                     {
-                        alert("Aqua WON!!!!!! Press the Reset Button to Restart the Game");
+                        gameKhatam.classList.add("game-over");
+                        let newDiv = document.createElement('div');
+                        newDiv.innerHTML=`HURRAYYYY! AQUA WON`;
+                        newDiv.classList.add("texttostart");
+                        let resetDiv = document.createElement('div');
+                        resetDiv.innerHTML="PLAY AGAIN";
+                        resetDiv.classList.add("texttostart");
+                        gameKhatam.appendChild(newDiv);
+                        gameKhatam.appendChild(resetDiv);
+                        resetDiv.addEventListener("click", () => {
+                            location.reload();
+                        });
+                        flag=3;
                     }
             }
         };

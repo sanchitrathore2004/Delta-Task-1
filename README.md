@@ -17,9 +17,18 @@ doosra dabane se pehla band ----- doneeeeee
 hacker mode 
 
 semirico khatam agr ulti side lga to ---- done
-undo redo ------- 
+undo redo ------- bug solving left
 history of moves ko show kro screen pr aur game khatam hone pr local storage me save kro   ----- done
 sound effect lgao bhaii ----- done
 tank ek side se bullet pass krenge ----- done
 directional bullet ----- 
-swap rico ---------
+swap rico --------- 
+
+
+
+abhi kya krna h 
+1. ek ke baad dusra bhi select hona chahiye ------ very important   -------- doneeeee
+2. pop up lgao gameover ka aur ussi pe ek reset btn hona chahiye ------- doneeee
+3. orientation sahi nahi aa rha h kuch kuch browser me ya big screen me. -------- on the wayyy
+4. redo ke bug solve kro ---------- 
+5. HOM rotation pr theek kro --------- 

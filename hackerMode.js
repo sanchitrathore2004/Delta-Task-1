@@ -43,7 +43,7 @@ export function undo () {
                     let backTo=redMoveFrom.slice(-1)[0];
                     redRedoFrom[u]=backTo;
                     u++;
-                    arr[backTo].innerHTML=NameOfPiece;
+                    arr[backTo].innerHTML=NameOfPiece.toUpperCase();
                     arr[backTo].style.backgroundColor="red";
                     enableDiv(arr[backTo]);
                     console.log(arr[backTo]);
@@ -74,13 +74,15 @@ export function undo () {
                         newSpan.classList.add("afterresetricored");
                     }
                     newSpan.classList.add("rotatee");
+                    let emptyThisTemp=redMoveTo.slice(-1)[0];
+                    let emptyThis=emptyThisTemp.slice(3,5);
+                    emptyThis=parseInt(emptyThis)+0;
+                    let A = findAngle(arr[emptyThis]);
+                    newSpan.style.transform=`rotate(${A}deg)`;
                     arr[backTo].appendChild(newSpan);
                     arr[backTo].style.backgroundColor="red";
                     enableDiv(arr[backTo]);
                     console.log(arr[backTo]);
-                    let emptyThisTemp=redMoveTo.slice(-1)[0];
-                    let emptyThis=emptyThisTemp.slice(3,5);
-                    emptyThis=parseInt(emptyThis)+0;
                     redRedoTo[v]=emptyThis;
                     v++
                     arr[emptyThis].innerHTML="";
@@ -97,7 +99,7 @@ export function undo () {
                 if(NameOfPiece!="semirico" && NameOfPiece!="rico")
                     {
                         let backTo=aquaMoveFrom.slice(-1)[0];
-                        arr[backTo].innerHTML=NameOfPiece;
+                        arr[backTo].innerHTML=NameOfPiece.toUpperCase();
                         arr[backTo].style.backgroundColor="aqua";
                         aquaRedoFrom[w]=backTo;
                         w++;
@@ -131,13 +133,15 @@ export function undo () {
                         newSpan.classList.add("afterresetricoaqua");
                     }
                     newSpan.classList.add("rotatee");
+        let emptyThisTemp=aquaMoveTo.slice(-1)[0];
+                    let emptyThis=emptyThisTemp.slice(3,5);
+                    emptyThis=parseInt(emptyThis)+0;
+                    let A = findAngle(arr[emptyThis]);
+        newSpan.style.transform=`rotate(${A}deg)`;
                     arr[backTo].appendChild(newSpan);
                     arr[backTo].style.backgroundColor="aqua";
                     enableDiv(arr[backTo]);
                     console.log(arr[backTo]);
-                    let emptyThisTemp=aquaMoveTo.slice(-1)[0];
-                    let emptyThis=emptyThisTemp.slice(3,5);
-                    emptyThis=parseInt(emptyThis)+0;
                     aquaRedoTo[x]=emptyThis;
                         x++;
                     arr[emptyThis].innerHTML="";
@@ -156,19 +160,73 @@ export function redo () {
     console.log(redRedoFrom,redRedoTo);
     console.log(aquaRedoFrom,aquaRedoTo);
     let nameOfReq=nameForRedo.slice(-1)[0];
-    if(nameOfReq.split(" ")[2]=="red")
+    console.log(nameOfReq);
+    console.log(nameOfReq.split(" ")[1]);
+    nameForRedo.pop();
+    if(nameOfReq.split(" ")[1]=="red")
         {
+            if(nameForRedo.slice(-1)[0].split(" ")[0]!="semirico" && nameForRedo.slice(-1)[0].split(" ")[0]!="rico"){
+                if(redRedoFrom.slice(-1)[0] && redRedoTo.slice(-1)[0]){
             arr[redRedoFrom.slice(-1)[0]].innerHTML="";
             arr[redRedoFrom.slice(-1)[0]].style.backgroundColor="cornsilk";
-            arr[redRedoTo.slice(-1)[0]].innerHTML=nameForRedo.slice(-1)[0].split(" ")[0];
+            arr[redRedoTo.slice(-1)[0]].innerHTML=nameForRedo.slice(-1)[0].split(" ")[0].toUpperCase();
             arr[redRedoTo.slice(-1)[0]].style.backgroundColor=nameForRedo.slice(-1)[0].split(" ")[1];
         }
-        else if(nameOfReq.split(" ")[2]=="aqua")
+        }
+        else{
+            let newSpan=document.createElement('span');
+            if(nameForRedo.slice(-1)[0].split(" ")[0]=="semirico"){
+                newSpan.innerHTML="SEMIRICO";
+                newSpan.classList.add("afterresetsemired");
+            }
+            else if(nameForRedo.slice(-1)[0].split(" ")[0]=="rico")
+                {
+                    newSpan.innerHTML="RICO";
+                    newSpan.classList.add("afterresetricored");
+                }
+        newSpan.classList.add("rotatee");
+        let A = findAngle(arr[redRedoFrom.slice(-1)[0]]);
+        newSpan.style.transform=`rotate(${A}deg)`;
+        arr[redRedoTo.slice(-1)[0]].appendChild(newSpan);
+        arr[redRedoTo.slice(-1)[0]].style.backgroundColor="red";
+        arr[redRedoFrom.slice(-1)[0]].innerHTML="";
+        arr[redRedoFrom.slice(-1)[0]].style.backgroundColor="cornsilk";        
+        }
+        redRedoFrom.pop();
+        redRedoTo.pop();
+        }
+        else if(nameOfReq.split(" ")[1]=="aqua")
             {
+                if(nameForRedo.slice(-1)[0].split(" ")[0]!="semirico" && nameForRedo.slice(-1)[0].split(" ")[0]!="rico"){
+                console.log("yaha aa rha h");
+                if(aquaRedoFrom.slice(-1)[0] && aquaRedoTo.slice(-1)[0]){
                 arr[aquaRedoFrom.slice(-1)[0]].innerHTML="";
                 arr[aquaRedoFrom.slice(-1)[0]].style.backgroundColor="cornsilk";
-                arr[aquaRedoTo.slice(-1)[0]].innerHTML=nameForRedo.slice(-1)[0].split(" ")[0];
+                arr[aquaRedoTo.slice(-1)[0]].innerHTML=nameForRedo.slice(-1)[0].split(" ")[0].toUpperCase();
                 arr[aquaRedoTo.slice(-1)[0]].style.backgroundColor=nameForRedo.slice(-1)[0].split(" ")[1];
+            }
+                }
+                else{
+                    let newSpan=document.createElement('span');
+            if(nameForRedo.slice(-1)[0].split(" ")[0]=="semirico"){
+                newSpan.innerHTML="SEMIRICO";
+                newSpan.classList.add("afterresetsemiaqua");
+            }
+            else if(nameForRedo.slice(-1)[0].split(" ")[0]=="rico")
+                {
+                    newSpan.innerHTML="RICO";
+                    newSpan.classList.add("afterresetricoaqua");
+                }
+        newSpan.classList.add("rotatee");
+        let A = findAngle(arr[aquaRedoFrom.slice(-1)[0]]);
+        newSpan.style.transform=`rotate(${A}deg)`;
+        arr[aquaRedoTo.slice(-1)[0]].appendChild(newSpan);
+        arr[aquaRedoTo.slice(-1)[0]].style.backgroundColor="aqua";
+        arr[aquaRedoFrom.slice(-1)[0]].innerHTML="";
+        arr[aquaRedoFrom.slice(-1)[0]].style.backgroundColor="cornsilk";    
+                }
+                aquaRedoFrom.pop();
+                aquaRedoTo.pop();
             }
 }
 

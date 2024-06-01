@@ -34,6 +34,7 @@ let p=0;
 let q=0;
 let s=0;
 let t=0;
+let previousSelected=null;
 export let moveNameArray=[];
 export let aquaMoveFrom=[];
 export let redMoveFrom=[];
@@ -41,34 +42,29 @@ export let aquaMoveTo=[];
 export let redMoveTo=[];
 export function Movement(){
     clickSound.play();
-    if(mainSign==false)
+    if(previousSelected){
+        console.log(previousSelected);
+        let previousClassName=previousSelected.className;
+        let previousColor = previousClassName.split(" ")[2];
+        previousSelected.style.backgroundColor=previousColor;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] && arr[i]!=previousSelected) {
+                if(arr[i].innerHTML==""){
+                arr[i].style.backgroundColor = "cornsilk"; // Reset background color
+            }
+                arr[i].removeEventListener("click", handleTankClick); // Remove event listener
+            }
+        }
+        previousSelected = null;
+    }
+    for(let i=0;i<arr.length;i++)
         {
-            mainSign=true;
+            if(arr[i] && arr[i].innerHTML=="")
+                {
+                    arr[i].style.backgroundColor="cornsilk";
+                }
+                
         }
-    mainSign=true;
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] && isRed(getComputedStyle(arr[i]).backgroundColor)) {
-            let idNumber = arr[i].id.match(/\d+/);
-            if (idNumber) {
-                redPieces.push(Number(idNumber[0]));
-                l++;
-            }
-        }
-    }
-    
-    console.log(redPieces);
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] && isAqua(getComputedStyle(arr[i]).backgroundColor)) {
-            
-            let idNumber = arr[i].id.match(/\d+/);
-            if (idNumber) {
-                aquaPieces.push(Number(idNumber[0])); 
-                l++;
-            }
-        }
-    }
-    console.log(aquaPieces);
-    console.log(redPieces);
 console.log(posPiece);
 ID=this.id;
 console.log(ID);
@@ -80,62 +76,31 @@ html= this.innerHTML;
 classTitle= this.className;
 colarr=classTitle.split(" ");
 colour=colarr[2];
-if(colour=="red")
-    {
-        redMoveFrom[p]=ID;
-        p++;
-        let moveFrom=document.createElement('div');
-        moveFrom.innerHTML=`box${ID}`;
-        moveFrom.classList.add("bgcolor");
-        movePieceFrom.appendChild(moveFrom);
-    }
-    else if(colour=="aqua")
-        {
-            aquaMoveFrom[q]=ID;
-            q++;
-            let moveFrom=document.createElement('div');
-            moveFrom.innerHTML=`box${ID}`;
-            moveFrom.classList.add("bgcolor");
-            movePieceFrom.appendChild(moveFrom);   
-        }
-        console.log("FROM",aquaMoveFrom,redMoveFrom);
-        let moveName=document.createElement('div');
-        if(resetHua)
-            {
-                u=1;
-            }
-            // resetHua=false;
-            moveNameArray[v]=`${colarr[1]} ${colour}`;
-            v++;
-            console.log("NAME",moveNameArray);
-        moveName.innerHTML=`${u}) ${colarr[1]} ${colour}`;
-        moveName.classList.add("bgcolor");
-        u++;
-        namePiece.appendChild(moveName);
+
         // redMoveFrom=[];
         // aquaMoveFrom=[];
 console.log(colour);
-if(colour=="red")
-    {
-        for(let i=0;i<redPieces.length;i++)
-            {
-                if(arr[redPieces[i]] && arr[redPieces[i]]!=this)
-                    {
-                        disableDiv(arr[redPieces[i]]);
-                    }
-            }
-    }
-    else if (colour=="aqua")
-        {
-            for(let i=0;i<aquaPieces.length;i++)
-                {
-                    if(arr[aquaPieces[i]] && arr[aquaPieces[i]]!=this)
-                        {
-                            disableDiv(arr[aquaPieces[i]]);
-                        }
-                }
+// if(colour=="red")
+//     {
+//         for(let i=0;i<redPieces.length;i++)
+//             {
+//                 if(arr[redPieces[i]] && arr[redPieces[i]]!=this)
+//                     {
+//                         disableDiv(arr[redPieces[i]]);
+//                     }
+//             }
+//     }
+//     else if (colour=="aqua")
+//         {
+//             for(let i=0;i<aquaPieces.length;i++)
+//                 {
+//                     if(arr[aquaPieces[i]] && arr[aquaPieces[i]]!=this)
+//                         {
+//                             disableDiv(arr[aquaPieces[i]]);
+//                         }
+//                 }
                 
-        }
+//         }
         redPieces=[];
         aquaPieces=[];
 arr[ID].style.backgroundColor="cornsilk";
@@ -236,8 +201,36 @@ for (let i=0;i<brr.length;i++) {
     }
 }
  }
+ previousSelected = this;
 }
  export function handleTankClick () {
+    if(colour=="red")
+        {
+            redMoveFrom[p]=ID;
+            p++;
+            let moveFrom=document.createElement('div');
+            moveFrom.innerHTML=`box${ID}`;
+            moveFrom.classList.add("bgcolor");
+            movePieceFrom.appendChild(moveFrom);
+        }
+        else if(colour=="aqua")
+            {
+                aquaMoveFrom[q]=ID;
+                q++;
+                let moveFrom=document.createElement('div');
+                moveFrom.innerHTML=`box${ID}`;
+                moveFrom.classList.add("bgcolor");
+                movePieceFrom.appendChild(moveFrom);   
+            }
+            console.log("FROM",aquaMoveFrom,redMoveFrom);
+            let moveName=document.createElement('div');
+                moveNameArray[v]=`${colarr[1]} ${colour}`;
+                v++;
+                console.log("NAME",moveNameArray);
+            moveName.innerHTML=`${u}) ${colarr[1]} ${colour}`;
+            moveName.classList.add("bgcolor");
+            u++;
+            namePiece.appendChild(moveName);
     jumpSound.play();
      console.log(brr);
      this.innerHTML = html;

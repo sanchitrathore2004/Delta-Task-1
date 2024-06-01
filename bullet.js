@@ -9,6 +9,7 @@ let hitSound = document.querySelector("#hit-sound");
 let collideSound=document.querySelector("#collide-sound");
 let semiHit=document.querySelector("#semi-hit");
 let gameOverSound=document.querySelector("#game-over");
+export let gameKhatam = document.querySelector(".start-game");
 let check=true;
 export function bullet(colourr,directionOfBullet) {
     if (colourr == "aqua") {
@@ -277,13 +278,37 @@ function handleCollision(bullet, piece) {
                         {
                             gameOverSound.play();
                             bullet.remove();
-                            alert("Aqua WON!!! Press the Reset Button to Restart the Game");
+                            gameKhatam.classList.add("game-over");
+                            let newDiv = document.createElement('div');
+                            newDiv.innerHTML=`HURRAYYYY! AQUA WON`;
+                            newDiv.classList.add("texttostart");
+                            let resetDiv = document.createElement('div');
+                            resetDiv.innerHTML="PLAY AGAIN";
+                            resetDiv.classList.add("texttostart");
+                            gameKhatam.appendChild(newDiv);
+                            gameKhatam.appendChild(resetDiv);
+                            resetDiv.addEventListener("click", () => {
+                                location.reload();
+                            });
+                            // alert("Aqua WON!!! Press the Reset Button to Restart the Game");
                         }
                         else if (nameTemp[2]=="aqua")
                             {
                                 gameOverSound.play();
                                 bullet.remove();
-                                alert("Red WON!!!!!! Press the Reset Button to Restart the Game");
+                                gameKhatam.classList.add("game-over");
+                            let newDiv = document.createElement('div');
+                            newDiv.innerHTML=`HURRAYYYY! RED WON`;
+                            newDiv.classList.add("texttostart");
+                            let resetDiv = document.createElement('div');
+                            resetDiv.innerHTML="PLAY AGAIN";
+                            resetDiv.classList.add("texttostart");
+                            gameKhatam.appendChild(newDiv);
+                            gameKhatam.appendChild(resetDiv);
+                            resetDiv.addEventListener("click", () => {
+                                location.reload();
+                            });
+                                // alert("Red WON!!!!!! Press the Reset Button to Restart the Game");
                             }
                 }
 }
