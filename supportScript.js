@@ -9,6 +9,9 @@ export let namePiece=document.querySelector(".name-piece");
 export let movePieceTo=document.querySelector(".to");
 let red=[];
 let aqua=[];
+let drr=[];
+export let prevRotation=[];
+let e=0;
 let resume = document.querySelector(".resume");
 let currTurn=document.querySelector(".currTurn");
 var turn="aqua";
@@ -130,6 +133,7 @@ if(colarr[1]=="semirico" || colarr[1]=="rico")
         else
         {
             brr = [arr[ID-1],arr[ID+1],arr[ID-7],arr[ID-8],arr[ID-9],arr[ID+7],arr[ID+8],arr[ID+9]];
+            drr=brr;
         }
         console.log(brr);
         for(let i=0;i<brr.length;i++)
@@ -342,7 +346,9 @@ for (let i=0;i<brr.length;i++) {
                     currentRotation = -135;
                 }
             }
-        
+            prevRotation[e]=currentRotation;
+            e++;
+            console.log(prevRotation);
             if (this.innerHTML == "ANTICLOCKWISE") {
                 console.log("got anti");
                 currentRotation -= 90;
@@ -365,12 +371,73 @@ for (let i=0;i<brr.length;i++) {
                 rotation.classList.remove("rico");
                 brr = [arr[ID-1],arr[ID+1],arr[ID-7],arr[ID-8],arr[ID-9],arr[ID+7],arr[ID+8],arr[ID+9]];
                 for (const e of brr) {
-                    if(e.innerHTML=="")
+                    if(e && e.innerHTML=="")
                         {
                             e.style.backgroundColor="cornsilk";
                         }
                 }
                 arr[ID].style.backgroundColor=`${colour}`;
+                if(colarr[2]=="red")
+                    {
+                        console.log(arr[ID]);
+                        arr[ID].style.backgroundColor="red";
+                    }
+                    else if(colarr[2]=="aqua")
+                        {
+                            console.log(arr[ID]);
+                            arr[ID].style.backgroundColor="aqua";
+                        }
+                        if(drr.length>2){
+                            if((ID-1)%8==0)
+                                {
+                                    if(i!=0 && i!=4 && i!=5)
+                                        {
+                                            drr[i].removeEventListener("click", handleTankClick);
+                                        }
+                                }
+                                else if (ID%8==0)
+                                    {
+                                        if(i!=1 && i!=7 && i!=2)
+                                            {
+                                                drr[i].removeEventListener("click", handleTankClick);
+                                            }
+                                    }
+                                else
+                                {
+                                    drr[i].removeEventListener("click", handleTankClick);
+                                }
+                        }
+                        console.log(ID);
+                        if(ID>57)
+                            {
+                                let frr=[arr[ID-1],arr[ID+1],arr[ID-8],arr[ID-9],arr[ID-7]];
+                                console.log(frr);
+                                for(let i=0;i<frr.length;i++)
+                                    {
+                                        console.log("yaha tk aara h");
+                                        if(frr[i])
+                                            {
+                                                console.log(arr[frr[i]],"hata dia");
+                                                frr[i].removeEventListener("click", handleTankClick);
+                                            }
+                                    }
+                                    frr=[];
+                            }
+                            else if(ID<9)
+                                {
+                                    let grr=[arr[ID-1],arr[ID+1],arr[ID+8],arr[ID+9],arr[ID+7]];
+                                    console.log(grr);
+                                    for(let i=0;i<grr.length;i++)
+                                        {
+                                            console.log("yaha tk aara h");
+                                            if(grr[i])
+                                                {
+                                                    console.log(arr[grr[i]],"hata dia");
+                                                    grr[i].removeEventListener("click", handleTankClick);
+                                                }
+                                        } 
+                                        grr=[];
+                                }
                 switchTurn();
                 bullet(colour);
       }

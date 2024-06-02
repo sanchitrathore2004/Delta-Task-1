@@ -1,8 +1,7 @@
-import { findAngle, fireBulletFrom } from "./bullet.js";
+import { destroyedSemiAngle, destroyedSemirico, findAngle, fireBulletFrom } from "./bullet.js";
 import { arr } from "./scriptAll.js";
-import { ID, Movement, aquaMoveFrom, aquaMoveTo, enableDiv, handleTankClick, moveNameArray, redMoveFrom, redMoveTo, switchTurn } from "./supportScript.js";
+import { ID, Movement, aquaMoveFrom, aquaMoveTo, enableDiv, handleTankClick, moveNameArray, prevRotation, redMoveFrom, redMoveTo, switchTurn } from "./supportScript.js";
 
-let p45=document.querySelector(".p-45");
 let pushPiece;
 let nameForRedo=[];
 let t=0;
@@ -14,28 +13,99 @@ let u=0;
 let v=0;
 let w=0;
 let x=0;
-
-export function checkBulletDirection () {
-    for(let i=0;i<arr.length;i++)
-        {
-            if(arr[i] && arr[i].classList.contains('CANON') && arr[i].classList.contains('aqua'))
-                {
-                    pushPiece=arr[i];
-                }
-        }
-    p45.addEventListener("click", fireBulletFrom(pushPiece,'p45'));
-}
-
+let flag1=true;
 
 export function undo () {
+    console.log(prevRotation);
+    console.log(destroyedSemiAngle);
+    console.log(destroyedSemirico);
+    if(destroyedSemiAngle[0] && destroyedSemirico[0]){
+    let colorOfDS=destroyedSemirico[0].className;
+    colorOfDS=colorOfDS.split(" ")[2];
+    if(colorOfDS=="red"){
+        destroyedSemirico[0].style.backgroundColor="red";
+        let newSpan=document.createElement('span');
+        newSpan.classList.add("afterresetsemired");
+        newSpan.innerHTML="SEMIRICO";
+        newSpan.style.transform=`rotate(${destroyedSemiAngle[0]}deg)`;
+        newSpan.classList.add("rotatee");
+        destroyedSemirico[0].appendChild(newSpan);
+        enableDiv(destroyedSemirico[0]);
+    }
+    else if(colorOfDS=="aqua")
+        {
+            destroyedSemirico[0].style.backgroundColor="aqua";
+        let newSpan=document.createElement('span');
+        newSpan.classList.add("afterresetsemiaqua");
+        newSpan.innerHTML="SEMIRICO";
+        newSpan.style.transform=`rotate(${destroyedSemiAngle[0]}deg)`;
+        newSpan.classList.add("rotatee");
+        destroyedSemirico[0].appendChild(newSpan);
+        enableDiv(destroyedSemirico[0]);
+        }
+        destroyedSemiAngle.pop();
+        destroyedSemirico.pop();
+    }
     console.log(moveNameArray,redMoveFrom,redMoveTo,aquaMoveFrom,aquaMoveTo);
     let lastPiece=moveNameArray.slice(-1)[0];
     console.log(lastPiece);
     let NameOfPiece=lastPiece.split(" ")[0];
     let ColorOfPiece=lastPiece.split(" ")[1];
     nameForRedo[t]=`${NameOfPiece} ${ColorOfPiece}`;
+    console.log(nameForRedo);
     t++;
+    if(prevRotation[0]){
+        if(ColorOfPiece=="red" && NameOfPiece=="semirico")
+            {
+                let backTo=redMoveFrom.slice(-1)[0];
+                let newSpan=document.createElement('span');
+                newSpan.innerHTML="SEMIRICO";
+                newSpan.classList.add("afterresetsemired");
+                newSpan.classList.add("rotatee");
+                newSpan.style.transform=`rotate(${prevRotation[0]}deg)`;
+                arr[backTo].innerHTML="";
+                arr[backTo].style.backgroundColor="red";
+                arr[backTo].appendChild(newSpan);
+            }   
+            else if(ColorOfPiece=="red" && NameOfPiece=="rico")
+                {
+                    let backTo=redMoveFrom.slice(-1)[0];
+                    let newSpan=document.createElement('span');
+                    newSpan.innerHTML="RICO";
+                    newSpan.classList.add("afterresetricored");
+                    newSpan.classList.add("rotatee");
+                    newSpan.style.transform=`rotate(${prevRotation[0]}deg)`;
+                    arr[backTo].innerHTML="";
+                    arr[backTo].style.backgroundColor="red";
+                    arr[backTo].appendChild(newSpan);
+                }
+                else if(ColorOfPiece=="aqua" && NameOfPiece=="rico"){
+                    let backTo=aquaMoveFrom.slice(-1)[0];
+                    let newSpan=document.createElement('span');
+                    newSpan.innerHTML="RICO";
+                    newSpan.classList.add("afterresetricoaqua");
+                    newSpan.classList.add("rotatee");
+                    newSpan.style.transform=`rotate(${prevRotation[0]}deg)`;
+                    arr[backTo].innerHTML="";
+                    arr[backTo].style.backgroundColor="aqua";
+                    arr[backTo].appendChild(newSpan);
+                }
+                else if (ColorOfPiece=="aqua" && NameOfPiece=="semirico"){
+                    let backTo=aquaMoveFrom.slice(-1)[0];
+                    let newSpan=document.createElement('span');
+                    newSpan.innerHTML="SEMIRICO";
+                    newSpan.classList.add("afterresetsemiaqua");
+                    newSpan.classList.add("rotatee");
+                    newSpan.style.transform=`rotate(${prevRotation[0]}deg)`;
+                    arr[backTo].innerHTML="";
+                    arr[backTo].style.backgroundColor="aqua";
+                    arr[backTo].appendChild(newSpan);
+                }
+                prevRotation.pop();
+                flag1=false;
+    }
     moveNameArray.pop();
+    if(flag1){
     if(ColorOfPiece=="red")
         {
             if(NameOfPiece!="semirico" && NameOfPiece!="rico")
@@ -153,6 +223,8 @@ export function undo () {
                     aquaMoveTo.pop();
                     }
             }
+        }
+        flag1=true;
 }
 
 export function redo () {

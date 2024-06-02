@@ -1,32 +1,76 @@
-import { arr } from "./scriptAll.js";
+import { arr, stopGameSound } from "./scriptAll.js";
 import { Movement } from "./supportScript.js";
 
 let finalAngleOfPeice;
+export let destroyedSemirico=[];
+export let destroyedSemiAngle=[];
+let c=0;
+let d=0;
 let collidables=[];
 let flag;
 let j=0;
 let hitSound = document.querySelector("#hit-sound");
 let collideSound=document.querySelector("#collide-sound");
 let semiHit=document.querySelector("#semi-hit");
-let gameOverSound=document.querySelector("#game-over");
+export let gameOverSound=document.querySelector("#game-over");
 export let gameKhatam = document.querySelector(".start-game");
 let check=true;
-export function bullet(colourr,directionOfBullet) {
+let bD=null;
+let cD=null;
+let colorHatao=null;
+
+export function setDirection () {
+    console.log(this);
+    colorHatao=this;
+    this.style.backgroundColor="darkkhaki";
+    if(this.innerHTML=="+45 DEG")
+        {
+            bD="p45";
+            console.log(bD);
+        }
+        else if(this.innerHTML=="-45 DEG")
+            {
+                bD="n45";
+                console.log(bD);
+            }
+            else if (this.innerHTML=="LEFT")
+                {
+                    bD="left";
+                    console.log(bD);
+                }
+                else if(this.innerHTML=="RIGHT")
+                    {
+                        bD="right";
+                        console.log(bD);
+                    }
+}
+export function bullet(colourr) {
     if (colourr == "aqua") {
+        if(bD){
+            for (let i = 57; i <= 64; i++) {
+                if (arr[i].innerHTML == "CANON") {
+                            fireBulletFrom(arr[i], `${bD}`);
+                        }
+                }
+        }
+        else{
         for (let i = 57; i <= 64; i++) {
             if (arr[i].innerHTML == "CANON") {
-                if(directionOfBullet)
-                    {
-                        fireBulletFrom(arr[i], 'p45');
-                        break;
-                    }
-                    else{
                         fireBulletFrom(arr[i], 'up');
-                        break;
                     }
             }
         }
-    } else if (colourr == "red") {
+        }
+     else if (colourr == "red") {
+        if(bD){
+            for (let i = 1; i <= 8; i++) {
+                if (arr[i].innerHTML == "CANON") {
+                    fireBulletFrom(arr[i], `${bD}`);
+                    break;
+                }
+            }
+        }
+        else{
         for (let i = 1; i <= 8; i++) {
             if (arr[i].innerHTML == "CANON") {
                 fireBulletFrom(arr[i], 'down');
@@ -34,6 +78,8 @@ export function bullet(colourr,directionOfBullet) {
             }
         }
     }
+    }
+    bD=null;
 }
 
 export function fireBulletFrom(canonElement, direction) {
@@ -62,6 +108,10 @@ export function fireBulletFrom(canonElement, direction) {
     }
 
     bulletContainer.appendChild(bullet);
+    if(colorHatao){
+    colorHatao.style.backgroundColor="bisque";
+    colorHatao=null;
+}
     collidables=[];
     j=0;
     detectCollision(bullet,canonElement);
@@ -142,18 +192,28 @@ function handleCollision(bullet, piece) {
                 else if(A==-135 || A==135)
                     {
                         semiHit.play();
+                        let P=findAngle(arr[tempID]);
                         arr[tempID].innerHTML="";
                         arr[tempID].style.backgroundColor="cornsilk";
                         arr[tempID].removeEventListener("click", Movement);
+                        destroyedSemirico[c]=arr[tempID];
+                        c++;
+                        destroyedSemiAngle[d]=P;
+                        d++;
                         bullet.remove();
                     }
         } else if (bulletDirection == "down") {
             if(A==-45 || A==45)
                 {
                     semiHit.play();
+                    let P=findAngle(arr[tempID]);
                     arr[tempID].innerHTML="";
                         arr[tempID].style.backgroundColor="cornsilk";
                         arr[tempID].removeEventListener("click", Movement);
+                        destroyedSemirico[c]=arr[tempID];
+                        c++;
+                        destroyedSemiAngle[d]=P;
+                        d++;
                     bullet.remove();
                 }
                 else if(A==-135)
@@ -172,9 +232,14 @@ function handleCollision(bullet, piece) {
                 else if(A==45)
                     {
                         semiHit.play();
+                        let P=findAngle(arr[tempID]);
                         arr[tempID].innerHTML="";
                         arr[tempID].style.backgroundColor="cornsilk";
                         arr[tempID].removeEventListener("click", Movement);
+                        destroyedSemirico[c]=arr[tempID];
+                        c++;
+                        destroyedSemiAngle[d]=P;
+                        d++;
                         bullet.remove();
                     }
                     else if(A==-135)
@@ -184,9 +249,14 @@ function handleCollision(bullet, piece) {
                         else if(A==135)
                             {
                                 semiHit.play();
+                                let P=findAngle(arr[tempID]);
                                 arr[tempID].innerHTML="";
                         arr[tempID].style.backgroundColor="cornsilk";
                         arr[tempID].removeEventListener("click", Movement);
+                        destroyedSemirico[c]=arr[tempID];
+                        c++;
+                        destroyedSemiAngle[d]=P;
+                        d++;
                                 bullet.remove();
                             }
         } else if (bulletDirection == "right") {
@@ -197,9 +267,14 @@ function handleCollision(bullet, piece) {
                 else if(A==45)
                     {
                         semiHit.play();
+                        let P=findAngle(arr[tempID]);
                         arr[tempID].innerHTML="";
                         arr[tempID].style.backgroundColor="cornsilk";
                         arr[tempID].removeEventListener("click", Movement);
+                        destroyedSemirico[c]=arr[tempID];
+                        c++;
+                        destroyedSemiAngle[d]=P;
+                        d++;
                         bullet.remove();
                     }
                     else if(A==-135)
@@ -209,9 +284,14 @@ function handleCollision(bullet, piece) {
                         else if(A==135)
                             {
                                 semiHit.play();
+                                let P=findAngle(arr[tempID]);
                                 arr[tempID].innerHTML="";
                         arr[tempID].style.backgroundColor="cornsilk";
                         arr[tempID].removeEventListener("click", Movement);
+                        destroyedSemirico[c]=arr[tempID];
+                        c++;
+                        destroyedSemiAngle[d]=P;
+                        d++;
                                 bullet.remove();
                             }
         }
@@ -276,6 +356,7 @@ function handleCollision(bullet, piece) {
                 {
                     if(nameTemp[2]=="red")
                         {
+                            stopGameSound();
                             gameOverSound.play();
                             bullet.remove();
                             gameKhatam.classList.add("game-over");
@@ -294,6 +375,7 @@ function handleCollision(bullet, piece) {
                         }
                         else if (nameTemp[2]=="aqua")
                             {
+                                stopGameSound();
                                 gameOverSound.play();
                                 bullet.remove();
                                 gameKhatam.classList.add("game-over");
