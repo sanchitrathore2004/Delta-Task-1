@@ -467,6 +467,13 @@
     .navigation{
         width: 1326px;
     }
+    .photo{
+        margin-left: 570px;
+    }
+    .directional-bullet{
+        margin-top: -1010px;
+        margin-left: 1200px;
+    }
     .start-game{
         margin-left: 60px;
         margin-top: 335px;
@@ -496,6 +503,13 @@
 @media screen and (min-width:1023px) and (max-width:1439px){
     .navigation{
         width: 1330px;
+    }
+    .photo{
+        margin-left: 570px;
+    }
+    .directional-bullet{
+        margin-top: -960px;
+        margin-left: 970px;
     }
     .btns{
         margin-left: 1152px;
@@ -553,6 +567,14 @@
     .texttostart{
         font-size: 60px;
         margin-top: 60px;
+    }
+    .photo{
+        margin-left: 440px;
+    }
+    .directional-bullet{
+        margin-left: 100px;
+        margin-top: 1090px;
+        position: absolute;
     }
     .container{
         margin-top: 30px;
