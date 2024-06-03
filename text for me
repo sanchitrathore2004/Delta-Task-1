@@ -1,3 +1,6 @@
+html{
+    font-size: 62.5%;
+}
 *{
     margin: 0;
     background-color: rgb(163, 223, 181);
@@ -7,40 +10,40 @@
     position: sticky;
     background-color: rgb(30, 25, 18);
     width: 100%;
-    height: 30px;
+    height: 3.0rem;
     color: aliceblue;
     font-size: x-large;
     text-align: center;
     font-weight: bold;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
 }
 .container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 5px;
-    margin-top: 0px;
+    margin: .5rem;
+    margin-top: 0rem;
     width: 100%;
     height: 100%;
 }
 .timer{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
-    margin-top: 10px;
-    margin-left: 750px;
+    grid-gap: 2.0rem;
+    margin-top: 1.0rem;
+    margin-left: 75.0rem;
     position: absolute;
 }
 .time-message{
-    margin-top: 10px;
+    margin-top: 1.0rem;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: larger;
     font-weight: bold;
     position: relative;
-    margin-left: 910px;
-    margin-top: -10px;
+    margin-left: 91.0rem;
+    margin-top: -1.0rem;
     position: absolute;
 }
 .timer-red,
@@ -48,20 +51,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 200px;
-    height: 50px;
-    border: 3px solid black;
-    border-radius: 2px;
-    margin-top: 20px;
+    width: 20.0rem;
+    height: 5.0rem;
+    border: .3rem solid black;
+    border-radius: .2rem;
+    margin-top: 2.0rem;
     font-size: x-large;
-    box-shadow: 6px 6px rgba(1, 1, 4, 0.5);
+    box-shadow: .6rem .6rem rgba(1, 1, 4, 0.5);
     transition: width 0.5s, height 0.5s ease;
 
 }
 .timer-red:hover,
 .timer-aqua:hover{
-    width: 215px;
-    height: 60px;
+    width: 21.5rem;
+    height: 6.0rem;
     cursor: pointer;
 }
 .timer-red{
@@ -75,11 +78,11 @@
     grid-template-rows: repeat(8, 1fr);
     width: 90vh;
     height: 80vh;
-    margin-top: 20px;
-    margin-left: -600px;
-    border: 4px solid black;
-    border-radius: 3px;
-    box-shadow: 12px 12px 2px 1px rgba(1, 1, 4, 0.5);
+    margin-top: 2.0rem;
+    margin-left: -60.0rem;
+    border: .4rem solid black;
+    border-radius: .3rem;
+    box-shadow: 1.2rem 1.2rem .2rem .1rem rgba(1, 1, 4, 0.5);
 }
 .rowdown,
 .rowup{
@@ -88,15 +91,15 @@
 }
 .turn{
     position: absolute;
-    margin-left: 910px;
+    margin-left: 91.0rem;
     font-size: xx-large;
     font-weight: bolder;
-    margin-top: 40px;
+    margin-top: 4.0rem;
     font-family: 'Times New Roman', Times, serif;
 }
 .currTurn{
-    border: 3px solid black;
-    border-radius: 3px;
+    border: .3rem solid black;
+    border-radius: .3rem;
     font-size: x-large;
     text-align: center;
     transition: background-color 0.5s ease;
@@ -114,8 +117,8 @@
     justify-content: center;
     align-items: center;
     background-color: cornsilk;
-    border: 2px solid black;
-    border-radius: 7px;
+    border: .2rem solid black;
+    border-radius: .7rem;
     cursor: pointer;
     font-weight: bold;
     transition: border 0.5s ease;
@@ -123,7 +126,7 @@
 .dabba:hover,
 .dabba8:hover,
 .dabba1:hover{
-    border: 3px solid rgb(255, 255, 255);
+    border: .3rem solid rgb(255, 255, 255);
 }
 #box57,
 #box51,
@@ -146,52 +149,52 @@
     transform: rotate(45deg);
     background-color: #000000;
     color: white;
-    border-radius: 3px;
-    width: 77px;
+    border-radius: .3rem;
+    width: 7.7rem;
     text-decoration: underline;
     text-align: center;
-    height: 17px;
+    height: 1.7rem;
 }
 #redsemirico{
     transform: rotate(-45deg);
     background-color: black;
     color: white;
-    border-radius: 3px;
-    width: 77px;
+    border-radius: .3rem;
+    width: 7.7rem;
     text-decoration: underline;
     text-align: center;
-    height: 17px;
-    font-size: 15px;
+    height: 1.7rem;
+    font-size: 1.5rem;
 }
 .afterresetricored{
     transform: rotate(45deg);
     background-color: black;
     color: white;
-    border-radius: 3px;
-    width: 77px;
+    border-radius: .3rem;
+    width: 7.7rem;
     text-decoration: underline;
     text-align: center;
-    height: 20px;
-    font-size: 15px;
+    height: 2.0rem;
+    font-size: 1.5rem;
 }
 .afterresetsemired{
     transform: rotate(-45deg);
     background-color: black;
     color: white;
-    border-radius: 3px;
-    width: 77px;
+    border-radius: .3rem;
+    width: 7.7rem;
     text-decoration: underline;
     text-align: center;
-    height: 20px;
-    font-size: 15px;
+    height: 2.0rem;
+    font-size: 1.5rem;
 }
 #aquarico{
     transform: rotate(135deg);
     background-color: black;
     color: white;
-    border-radius: 3px;
-    width: 77px;
-    height: 20px;
+    border-radius: .3rem;
+    width: 7.7rem;
+    height: 2.0rem;
     text-align: center;
     text-decoration: underline;
 }
@@ -199,34 +202,34 @@
     transform: rotate(-135deg);
     background-color: black;
     color: white;
-    border-radius: 3px;
-    width: 77px;
+    border-radius: .3rem;
+    width: 7.7rem;
     text-decoration: underline;
     text-align: center;
-    height: 20px;
-    font-size: 15px;
+    height: 2.0rem;
+    font-size: 1.5rem;
 }
 .afterresetricoaqua{
     transform: rotate(135deg);
     background-color: black;
     color: white;
-    border-radius: 3px;
-    width: 77px;
+    border-radius: .3rem;
+    width: 7.7rem;
     text-decoration: underline;
     text-align: center;
-    height: 20px;
-    font-size: 15px;
+    height: 2.0rem;
+    font-size: 1.5rem;
 }
 #aquasemirico{
     transform: rotate(-135deg);
     background-color: black;
     color: white;
-    border-radius: 3px;
-    width: 77px;
+    border-radius: .3rem;
+    width: 7.7rem;
     text-decoration: underline;
     text-align: center;
-    height: 20px;
-    font-size: 15px;
+    height: 2.0rem;
+    font-size: 1.5rem;
 }
 #box8,
 #box14,
@@ -244,23 +247,23 @@
     flex-direction: column;
     justify-content: flex-start;
     background-color: bisque;
-    margin-left: 660px;
-    height: 200px;
-    margin-top: -155px;
-    width: 500px;
-    border: 3px solid black;
-    border-radius: 5px;
+    margin-left: 66.0rem;
+    height: 20.0rem;
+    margin-top: -15.5rem;
+    width: 50.0rem;
+    border: .3rem solid black;
+    border-radius: .5rem;
     overflow: auto;
 }
 .heading{
     background-color: bisque;
-    border: 1px solid black;
+    border: .1rem solid black;
     text-align: center;
 }
 .elsething{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    border: 1px solid black;
+    border: .1rem solid black;
     justify-content: center;
     align-items: center;
     background-color: bisque;
@@ -276,7 +279,7 @@
     justify-content: center;
     align-items: center;
     background-color: bisque;
-    border: 1px solid black;
+    border: .1rem solid black;
 
 }
 .rotation{
@@ -286,28 +289,28 @@
     position: absolute;
     background-color: yellowgreen;
     align-items: center;
-    border: 1px solid black;
-    width: 350px;
-    height: 100px;
+    border: .1rem solid black;
+    width: 35.0rem;
+    height: 10.0rem;
     visibility: hidden;
-    margin-left: 785px;
-    margin-top: 100px
+    margin-left: 78.5rem;
+    margin-top: 10.0rem
     ;
 }
 .btns{
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
-    grid-gap: 20px;
+    grid-gap: 2.0rem;
     justify-content: center;
     justify-content: space-around;
     position: absolute;
     /* background-color: yellowgreen; */
     align-items: center;
-    /* border: 1px solid black; */
-    width: 100px;
-    height: 50px;
-    margin-left: 1210px;
-    margin-top: -130px;
+    /* border: 1rem solid black; */
+    width: 10.0rem;
+    height: 5.0rem;
+    margin-left: 121.0rem;
+    margin-top: -13.0rem;
     cursor: pointer;
 }
 .reset,
@@ -316,16 +319,16 @@
 .undo,
 .redo{
     font-size: larger;
-    border: 1px solid black;
-    border-radius: 2px;
+    border: .1rem solid black;
+    border-radius: .2rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100px;
-    height: 50px;
+    width: 10.0rem;
+    height: 5.0rem;
     background-color: aquamarine;
     transition: background-color 0.5s, width 0.5s, height 0.5s ease;
-    box-shadow: 6px 6px rgba(1, 1, 4, 0.5);
+    box-shadow: .6rem .6rem rgba(1, 1, 4, 0.5);
 }
 .reset:hover,
 .pause:hover,
@@ -333,27 +336,27 @@
 .undo:hover,
 .redo:hover{
     background-color: rgb(36, 227, 227);
-    width: 110px;
-    height: 60px;
+    width: 11.0rem;
+    height: 6.0rem;
 }
 .left,
 .right{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
-    width: 150px;
-    height: 50px;
+    border: .1rem solid black;
+    width: 15.0rem;
+    height: 5.0rem;
     text-align: center;
-    box-shadow: 1px 1px;
+    box-shadow: .1rem .1rem;
     background-color: aliceblue;
     cursor: pointer;
     transition: width 0.5s, height 0.5s ease;
 }
 .left:hover,
 .right:hover{
-    width: 160px;
-    height: 60px;
+    width: 16.0rem;
+    height: 6.0rem;
 }
 .rico{
     visibility: visible;
@@ -362,22 +365,22 @@
     display: grid;
     justify-content: space-evenly;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    border: 2px solid black;
+    border: .2rem solid black;
     background-color: bisque;
-    margin-left: 660px;
-    margin-top: -600px;
-    width: 200px;
-    height: 40px;
+    margin-left: 66.0rem;
+    margin-top: -60.0rem;
+    width: 20.0rem;
+    height: 4.0rem;
     justify-content: center;
     align-items: center;
-    padding: 3px;
+    padding: .3rem;
     /* visibility: hidden; */
 }
 .sound-btn{
-    width: 50px;
-    height: 50px;
-    margin-left: 655px;
-    margin-top: 53px;
+    width: 5.0rem;
+    height: 5.0rem;
+    margin-left: 65.5rem;
+    margin-top: 5.3rem;
     position: absolute;
     cursor: pointer;
 }
@@ -388,42 +391,42 @@
 .left-bullet{
     background-color: bisque;
     text-align: center;
-    padding: 5px;
+    padding: .5rem;
     cursor: pointer;
     transition: border 0.5s, background-color 0.5s ease;
 }
 .start-game{
-    width: 600px;
-    height: 200px;
+    width: 60.0rem;
+    height: 20.0rem;
     background-color: rgb(4, 4, 29);
-    margin-top: 540px;
-    margin-left: -600px;
+    margin-top: 54.0rem;
+    margin-left: -60.0rem;
     position: absolute;
     visibility: hidden;
 }
 .mode-select{
-    width: 700px;
-    height: 200px;
+    width: 70.0rem;
+    height: 20.0rem;
     background-color: rgb(4, 4, 29);
-    margin-top: 570px;
-    margin-left: -600px;
+    margin-top: 57.0rem;
+    margin-left: -60.0rem;
     position: absolute;
     /* visibility: hidden; */
 }
 .mode-info{
-    margin-left: 270px;
+    margin-left: 27.0rem;
     position: absolute;
-    margin-top: 120px;
+    margin-top: 12.0rem;
     font-size: large;
-    /* margin-top: -100px; */
+    /* margin-top: -100rem; */
 }
 .normal-mode,
 .hacker-mode{
     background-color: rgb(4, 4, 29);
     color: white;
     font-size: large;
-    border: 1px solid white;
-    padding: 10px;
+    border: .1rem solid white;
+    padding: 1.0rem;
     transition: background-color 0.5s, color 0.5s ease;
     cursor: pointer;
 }
@@ -444,7 +447,7 @@
     background-color: rgb(4, 4, 29);
     color: white;
     text-align: center;
-    padding: 20px;
+    padding: 2.0rem;
     font-size: xx-large;
     cursor: pointer;
 }
@@ -462,7 +465,7 @@
     background-color: rgb(4, 4, 29);
     text-align: center;
     font-size: larger;
-    padding: 20px;
+    padding: 2.0rem;
 }
 .game-over{
     visibility: visible;
@@ -473,7 +476,7 @@
     align-items: center;
     background-color: rgb(4, 4, 29);
     color: white;
-    height: 100px;
+    height: 10.0rem;
     font-size: xx-large;
     cursor: pointer;
     transition: color 0.5s ease;
@@ -484,440 +487,277 @@
 }
 .right-bullet:hover,
 .left-bullet:hover{
-    border: 1px solid black;
+    border: .1rem solid black;
     /* background-color: darkkhaki; */
 }
 @media screen and (min-width:1439px) and (max-width:2559px){
-    /* 1440 */
-    .all{
-        margin-left: 700px;
-        width: 100px;
-        height: 100px;
-    }
-    .playspace{
-        width: 800px;
-        height: 800px;
-        margin-right: 10px;
-    }
-    .navigation{
-        width: 1488px;
-        margin-left: -700px;
-    }
-    .timer{
-        margin-left: 820px;
-    }
-    .btns{
-        margin-left: 1280px;
-    }
-    .history{
-        margin-left: 820px;
-    }
-    .start-game{
-        width: 700px;
-        margin-top: 520px;
-    }
-    .rotation{
-        margin-left: 870px;
-    }
-    .time-message{
-        margin-left: 990px;
-    }
-    .turn{
-        margin-left: 995px;
-        margin-top: 60px;
-    }
-}
-@media screen and (min-width:786px) and (max-width:1024px){
-    /* tablet */
-    .navigation{
-        width: 1326px;
-    }
-    .photo{
-        margin-left: 570px;
-    }
-    .mode-info{
-        margin-left: 980px;
-    }
-    .mode-select{
-        margin-left: 50px;
-        margin-top: 745px;
-    }
-    .directional-bullet{
-        margin-top: -1010px;
-        margin-left: 1200px;
-    }
-    .start-game{
-        margin-left: 60px;
-        margin-top: 745px;
-        width: 700px;
-    }
-    .rotation{
-        margin-left: 850px;
-    }
-    .btns{
-        margin-top: 250px;
-        margin-left: 1150px;
-    }
-    .timer{
-        margin-left: 820px;
-    }
-    .history{
-        margin-left: 850px;
-        margin-top: 30px;
-        width: 600px;
-    }
-    .playspace{
-        margin-left: 50px;
-        width: 800px;
-        height: 800px;
-    }
-}
-@media screen and (min-width:1px) and (max-width:321px){
-    .navigation{
-        width: 419px;
-    }
-    .playspace{
-        margin-left: 800px;
-        margin-top: 200px;
-        width: 1100px;
-        height: 1100px;
-    }
-    .history{
-        margin-top: 250px;
-        margin-left: 300px;
-    }
-    .timer{
-        margin-top: 800px;
-        margin-left: 400px;
-    }
-    .time-message{
-        margin-top: 750px;
-        margin-left: 590px;
-    }
-    .start-game{
-        margin-left: 800px;
-        margin-top: -150px;
-    }
-    .btns{
-        display: flex;
-        margin-top: 950px;
-        margin-left: 700px;
-    }
-    .mode-info{
-        margin-top: 1450px;
-    }
-    .rotation{
-        margin-top: -550px;
-        margin-left: 400px;
-    }
-    .sound-btn{
-        margin-left: 1050px;
-        margin-top: 70px;
-    }
-    .mode-select{
-        margin-left: 800px;
-        width: 900px;
-        margin-top: -200px;
-    }
-    .mode-info{
-        margin-top: 1400px;
-        margin-left: 200px;
-    }
-    .directional-bullet{
-        margin-top: 1200px;
-        margin-left: 200px;
-        position: absolute;
-    }
-    .turn{
-        margin-top: 1300px;
-        margin-left: 800px;
-        position: absolute;
-    }
-}
-@media screen and (min-width:2559px) and (max-width:3500px){
-    .playspace{
-        margin-left: -1200px;
-    }
-    *{
-        font-size: 20px;
-    }
-    .btns{
-        margin-left: 2150px;
-        margin-top: 100px;
-    }
-    .history{
-        margin-top: -50px;
-        width: 1000px;
-        margin-left: 1200px;
-    }
-    .turn{
-        margin-top: 550px;
-    margin-left: 1820px;
-    }
-    .timer{
-        margin-top: 600px;
-        margin-left: 1650px;
-    }
-    .time-message{
-        margin-top: 550px;
-        margin-left: 1800px;
-    }
-    .directional-bullet{
-        margin-left: 1200px;
-        margin-top: -550px;
-    }
-    .mode-info{
-        margin-left: 2000px;
-        margin-top: 650px;
-    }
-    .start-game{
-        margin-left: -1200px;
-        margin-top: 350px;
-        width: 1000px;
-    }
-    .sound-btn{
-        margin-left: 2050px;
-        margin-top: 500px;
-    }
-    .mode-select{
-        width: 1200px;
-        height: 300px;
-        margin-left: -1200px;
-        margin-top: 400px;
-    }
-}
+ html{
+    font-size: 60%;
+    margin-left: 15%;
+    width: 60%;
+    height: 60%;
+    margin-top: 1%;
 
-@media screen and (min-width:3501px){
-    .playspace{
-        margin-left: -1700px;
+ }
+ 
+    /* 1440 */
+    /* .all{
+        margin-left: 70.0rem;
+        width: 10.0rem;
+        height: 10.0rem;
     }
-    .history{
-        margin-left: 1500px;
-        width: 1000px;
-        height: 300px;
+    .playspace{
+        width: 80.0rem;
+        height: 80.0rem;
+        margin-right: 1.0rem;
+    }
+    .navigation{
+        width: 148.8rem;
+        margin-left: -70.0rem;
     }
     .timer{
-        margin-left: 3200px;
-        margin-top: 1100px;
-    }
-    .time-message{
-        margin-left: 3350px;
-        margin-top: 1050px;
-    }
-    .start-game{
-        margin-left: -1700px;
-        margin-top: 300px;
-        width: 1500px;
-        height: 500px;
-    }
-    .turn{
-        margin-left: 3350px;
-        margin-top: 1350px;
+        margin-left: 82.0rem;
     }
     .btns{
-        margin-left: 3700px;
-        margin-top: 820px;
-    }
-    .directional-bullet{
-        margin-left: 1000px;
-        margin-top: -400px;
-    }
-    .mode-info{
-        margin-left: 2500px;
-        margin-top: 1500px;
-    }
-    .sound-btn{
-        margin-left: 200px;
-    }
-    .mode-select{
-        width: 1900px;
-        margin-left: -1700px;
-        margin-top: 200px;
-    }
-}
-@media screen and (min-width:4500px){
-    .history{
-        margin-left: 2200px;
-        width: 1000px;
-    }
-    .directional-bullet{
-        margin-left: 2000px;
-    }
-    .mode-info{
-        margin-left: 4200px;
-        margin-top: 2170px;
-    }
-}
-@media screen and (min-width:1025px) and (max-width:1439px){
-    /* 1024 */
-    .navigation{
-        width: 1330px;
-    }
-    .photo{
-        margin-left: 570px;
-    }
-    .mode-select{
-        margin-left: -200px;
-        margin-top: 630px;
-    }
-    .sound-btn{
-        margin-left: 800px;
-    }
-    .mode-info{
-        margin-left: 1060px;
-        /* position: absolute; */
-        margin-top: 120px;
-    }
-    .directional-bullet{
-        margin-top: -1070px;
-        margin-left: 970px;
-    }
-    .btns{
-        margin-left: 1052px;
-        margin-top: 190px;
-    }
-    .playspace{
-        margin-left: -200px;
-        width: 800px;
-        height: 800px;
+        margin-left: 128.0rem;
     }
     .history{
-        margin-top: 40px;
-        width: 800px;
-        height: 250px;
-        margin-left: 500px;
+        margin-left: 82.0rem;
     }
     .start-game{
-        width: 700px;
-        height: 250px;
-        margin-left: -200px;
-        margin-top: 630px;
+        width: 70.0rem;
+        margin-top: 52.0rem;
     }
     .rotation{
-        margin-left: 840px;
-    }
-    .timer{
-        margin-left: 830px;
+        margin-left: 87.0rem;
     }
     .time-message{
-        margin-left: 950px;
+        margin-left: 99.0rem;
+    }
+    .turn{
+        margin-left: 99.5rem;
+        margin-top: 6.0rem;
+    } */
+} 
+@media screen and (min-width:424px) and (max-width:768px){
+    html{
+        font-size: 35%;
+    }
+    /* tablet */
+    /* .navigation{
+        width: 132.6rem;
+    }
+    .photo{
+        margin-left: 570rem;
+    }
+    .mode-info{
+        margin-left: 880rem;
+    }
+    .mode-select{
+        margin-left: 50rem;
+        margin-top: 745rem;
+    }
+    .directional-bullet{
+        margin-top: -1010rem;
+        margin-left: 1200rem;
+    }
+    .start-game{
+        margin-left: 60rem;
+        margin-top: 745rem;
+        width: 700rem;
+    }
+    .rotation{
+        margin-left: 850rem;
+    }
+    .btns{
+        margin-top: 250rem;
+        margin-left: 1150rem;
+    }
+    .timer{
+        margin-left: 820rem;
+    }
+    .history{
+        margin-left: 850rem;
+        margin-top: 30rem;
+        width: 600rem;
+    }
+    .playspace{
+        margin-left: 50rem;
+        width: 800rem;
+        height: 800rem;
+    } */
+}
+@media screen and (min-width:1023px) and (max-width:1439px){
+    /* 1024 */
+    html{
+        font-size: 50%;
+    }
+    /* .navigation{
+        width: 1330rem;
+    }
+    .photo{
+        margin-left: 570rem;
+    }
+    .mode-select{
+        margin-left: -200rem;
+        margin-top: 630rem;
+    }
+    .mode-info{
+        margin-left: 860rem;
+        position: absolute;
+        margin-top: 120rem;
+    }
+    .directional-bullet{
+        margin-top: -960rem;
+        margin-left: 970rem;
+    }
+    .btns{
+        margin-left: 1152rem;
+        margin-top: 230rem;
+    }
+    .playspace{
+        margin-left: -200rem;
+    }
+    .history{
+        margin-top: 40rem;
+        width: 800rem;
+        height: 250rem;
+        margin-left: 500rem;
+    }
+    .start-game{
+        width: 700rem;
+        height: 250rem;
+        margin-left: -200rem;
+        margin-top: 630rem;
+    }
+    .rotation{
+        margin-left: 840rem;
+    }
+    .timer{
+        margin-left: 800rem;
+    }
+    .time-message{
+        margin-left: 890rem;
     }
     .currTurn{
-        margin-left: -15px;
+        margin-left: -15rem;
     }
     .turn{
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        margin-left: 910px;
+        margin-left: 910rem;
     }
     .turn-msg{
-        margin-left: -15px;
+        margin-left: -15rem;
     }
     .texttostart{
-        margin-top: 15px;
+        margin-top: 15rem;
     }
-    
+     */
 }
-@media screen and (min-width:320px) and (max-width:786px){
+@media screen and (min-width:320rem) and (max-width:426rem){
+    html{
+        font-size: 15%;
+    }
     /* mobile */
-    .start-game{
-        margin-left: 780px;
-        width: 1000px;
-        height: 400px;
-        margin-top: -260px;
+    /* .start-game{
+        margin-left: 780rem;
+        width: 1000rem;
+        height: 400rem;
+        margin-top: -260rem;
     }
     .mode-select{
-        margin-top: -288px;
-        margin-left: 780px;
-        width: 900px;
-        height: 270px;
+        margin-top: -288rem;
+        margin-left: 780rem;
+        width: 900rem;
+        height: 270rem;
     }
     .mode-info{
-        margin-top: 1300px;
-        margin-left: 100px;
+        margin-top: 1300rem;
+        margin-left: 100rem;
         position: absolute;
     }
     .opt,
     .difftext{
-        margin-top: 15px;
+        margin-top: 15rem;
     }
     .start{
-        margin-top: 60px;
+        margin-top: 60rem;
         padding: 0;
     }
     .texttostart{
-        font-size: 60px;
-        margin-top: 60px;
+        font-size: 60rem;
+        margin-top: 60rem;
     }
     .photo{
-        margin-left: 440px;
+        margin-left: 440rem;
     }
     .directional-bullet{
-        margin-left: 100px;
-        margin-top: 1090px;
+        margin-left: 100rem;
+        margin-top: 1090rem;
         position: absolute;
     }
     .container{
-        margin-top: 30px;
-        margin-left: 0px;
+        margin-top: 30rem;
+        margin-left: 0rem;
     }
     .rotation{
-        margin-top: -533px;
-        margin-left: 371px;
+        margin-top: -533rem;
+        margin-left: 371rem;
     }
     #redsemirico,
     #redrico,
     #aquasemirico,
     #aquarico{
-        font-size: 28px;
-        height: 35px;
-        width: 135px;
+        font-size: 28rem;
+        height: 35rem;
+        width: 135rem;
     }
     .afterresetricored{
         transform: rotate(45deg);
         background-color: black;
         color: white;
-        border-radius: 3px;
-        width: 159px;
+        border-radius: 3rem;
+        width: 159rem;
         text-decoration: underline;
         text-align: center;
-        height: 35px;
-        font-size: 25px;
+        height: 35rem;
+        font-size: 25rem;
     }
     .afterresetsemired{
         transform: rotate(-45deg);
         background-color: black;
         color: white;
-        border-radius: 3px;
-        width: 159px;
+        border-radius: 3rem;
+        width: 159rem;
         text-decoration: underline;
         text-align: center;
-        height: 35px;
-        font-size: 25px;
+        height: 35rem;
+        font-size: 25rem;
     }
     .afterresetsemiaqua{
         transform: rotate(-135deg);
         background-color: black;
         color: white;
-        border-radius: 3px;
-        width: 159px;
+        border-radius: 3rem;
+        width: 159rem;
         text-decoration: underline;
         text-align: center;
-        height: 35px;
-        font-size: 25px;
+        height: 35rem;
+        font-size: 25rem;
     }
     .afterresetricoaqua{
         transform: rotate(135deg);
         background-color: black;
         color: white;
-        border-radius: 3px;
-        width: 159px;
+        border-radius: 3rem;
+        width: 159rem;
         text-decoration: underline;
         text-align: center;
-        height: 35px;
-        font-size: 25px;
+        height: 35rem;
+        font-size: 25rem;
     }
     .navigation{
         display: grid;
@@ -925,20 +765,20 @@
         font-weight: bold;
         justify-content: center;
         align-items: center;
-        width: 1200px;
-        height: 100px;
+        width: 1200rem;
+        height: 100rem;
     }
     .playspace{
-        margin-top: 100px;
-        margin-left: 800px;
-        margin-right: 20px;
-        width: 1100px;
-        height: 1100px;
+        margin-top: 100rem;
+        margin-left: 800rem;
+        margin-right: 20rem;
+        width: 1100rem;
+        height: 1100rem;
     }
     .dabba,
     .dabba1,
     .dabba8{
-        font-size: 40px;
+        font-size: 40rem;
         color: black;
         font-weight: bolder;
     }
@@ -946,35 +786,35 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-left: 20px;
-        margin-top: 780px;
-        width: 1100px;
+        margin-left: 20rem;
+        margin-top: 780rem;
+        width: 1100rem;
     }
     .time-message{
-        margin-left: 475px;
-        margin-top: 730px;
-        width: 150px;
+        margin-left: 475rem;
+        margin-top: 730rem;
+        width: 150rem;
         font-size: xx-large;
     }
     .btns{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        margin-top: 874px;
-        margin-left: 628px;
+        margin-top: 874rem;
+        margin-left: 628rem;
     }
     .history{
-        margin-top: 180px;
-        margin-left: 300px;
+        margin-top: 180rem;
+        margin-left: 300rem;
     }
     .turn{
-        margin-top: 1285px;
-        margin-left: 710px;
+        margin-top: 1285rem;
+        margin-left: 710rem;
         font-size: xx-large;
-        width: 100px;
+        width: 100rem;
     }
     .currTurn{
-        margin-left: -20px;
-    }
+        margin-left: -20rem;
+    } */
 }
 
 @keyframes fireBullet45 {
@@ -1012,16 +852,16 @@
 
 .bullet-p45 {
     position: absolute;
-    width: 10px;
-    height: 10px;
+    width: 1.0rem;
+    height: 1.0rem;
     background-color: black;
     border-radius: 50%;
     animation: fireBullet45 4s forwards;
 }
 .bullet-n45 {
     position: absolute;
-    width: 10px;
-    height: 10px;
+    width: 1.0rem;
+    height: 1.0rem;
     background-color: black;
     border-radius: 50%;
     animation: fireBulletMinus45 4s forwards;
@@ -1029,8 +869,8 @@
 
 .bullet-up {
     position: absolute;
-    width: 10px;
-    height: 10px;
+    width: 1.0rem;
+    height: 1.0rem;
     background-color: rgb(31, 30, 30);
     border-radius: 50%;
     animation: fireBulletUp 4s forwards;
@@ -1049,8 +889,8 @@
 
 .bullet-down {
     position: absolute;
-    width: 10px;
-    height: 10px;
+    width: 1.0rem;
+    height: 1.0rem;
     background-color: black;
     border-radius: 50%;
     animation: fireBulletDown 4s forwards;
@@ -1081,8 +921,8 @@
 
 .bullet-left {
     position: absolute;
-    width: 10px;
-    height: 10px;
+    width: 1.0rem;
+    height: 1.0rem;
     background-color: black;
     border-radius: 50%;
     animation: fireBulletLeft 4s forwards;
@@ -1090,8 +930,8 @@
 
 .bullet-right {
     position: absolute;
-    width: 10px;
-    height: 10px;
+    width: 1.0rem;
+    height: 1.0rem;
     background-color: black;
     border-radius: 50%;
     animation: fireBulletRight 4s forwards;
