@@ -1,6 +1,6 @@
 import { setDirection } from "./bullet.js";
 import { redo, undo } from "./hackerMode.js";
-import { Movement, switchTurn} from "./supportScript.js";
+import { Movement, disableDiv, enableDiv, switchTurn} from "./supportScript.js";
 import { timer, pauseBtn, resumeBtn, timerFunction } from "./timer.js"
 
 console.log(timer);
@@ -15,6 +15,18 @@ let turn = "bottom";
 let rowup = document.querySelectorAll(".rowup");
 
 let rowdown = document.querySelectorAll(".rowdown");
+
+export let mode=null;
+let hackerMode=document.querySelector(".hacker-mode");
+let start=document.querySelector(".start");
+let modeSelect=document.querySelector(".mode-select");
+let directionalBullet=document.querySelector(".directional-bullet");
+let normalMode=document.querySelector(".normal-mode");
+let currMode=document.querySelector(".curr-mode");
+let modeInfo=document.querySelector(".mode-info");
+let thisIsLevel=document.querySelector(".this-is-level");
+let hmSound=document.querySelector("#hmSound");
+let nmSound=document.querySelector("#nmSound");
 
 export let rotation = document.querySelector(".rotation");
 
@@ -38,6 +50,34 @@ let rightBullet = document.querySelector(".right-bullet");
 // n45.addEventListener("click", setDirection);
 leftBullet.addEventListener("click", setDirection);
 rightBullet.addEventListener("click", setDirection);
+
+window.onload = function () {
+    timerFunction(3);
+}
+
+hackerMode.addEventListener("click", () => {
+    mode="hackerMode";
+    currMode.innerHTML="HACKER MODE";
+    hmSound.play();
+
+});
+normalMode.addEventListener("click", () => {
+    mode=null;
+    currMode.innerHTML="NORMAL MODE";
+    nmSound.play();
+});
+disableDiv(directionalBullet);
+start.addEventListener("click", () => {
+    modeSelect.style.visibility="hidden";
+    timerFunction(1);
+    if(mode=="hackerMode"){
+        enableDiv(directionalBullet);
+        thisIsLevel.innerHTML="HACKER MODE";
+    }
+    else{
+        thisIsLevel.innerHTML="NORMAL MODE";
+    }
+});
 
 // n45.addEventListener("click", () => {
 //     bD="n45";

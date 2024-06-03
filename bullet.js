@@ -1,5 +1,6 @@
-import { arr, stopGameSound } from "./scriptAll.js";
+import { arr, mode, stopGameSound } from "./scriptAll.js";
 import { Movement } from "./supportScript.js";
+import { timerFunction } from "./timer.js";
 
 let finalAngleOfPeice;
 export let destroyedSemirico=[];
@@ -191,6 +192,7 @@ function handleCollision(bullet, piece) {
                 }
                 else if(A==-135 || A==135)
                     {
+                        if(mode=="hackerMode"){
                         semiHit.play();
                         let P=findAngle(arr[tempID]);
                         arr[tempID].innerHTML="";
@@ -202,9 +204,14 @@ function handleCollision(bullet, piece) {
                         d++;
                         bullet.remove();
                     }
+                    else{
+                        bullet.remove();
+                    }
+                    }
         } else if (bulletDirection == "down") {
             if(A==-45 || A==45)
                 {
+                    if(mode=="hackerMode"){
                     semiHit.play();
                     let P=findAngle(arr[tempID]);
                     arr[tempID].innerHTML="";
@@ -215,6 +222,10 @@ function handleCollision(bullet, piece) {
                         destroyedSemiAngle[d]=P;
                         d++;
                     bullet.remove();
+                }
+                else{
+                    bullet.remove();
+                }
                 }
                 else if(A==-135)
                     {
@@ -231,6 +242,7 @@ function handleCollision(bullet, piece) {
                 }
                 else if(A==45)
                     {
+                        if(mode=="hackerMode"){
                         semiHit.play();
                         let P=findAngle(arr[tempID]);
                         arr[tempID].innerHTML="";
@@ -242,12 +254,17 @@ function handleCollision(bullet, piece) {
                         d++;
                         bullet.remove();
                     }
+                    else{
+                        bullet.remove();
+                    }
+                    }
                     else if(A==-135)
                         {
                             fireBulletFrom(piece,'up');
                         }
                         else if(A==135)
                             {
+                                if(mode=="hackerMode"){
                                 semiHit.play();
                                 let P=findAngle(arr[tempID]);
                                 arr[tempID].innerHTML="";
@@ -259,9 +276,14 @@ function handleCollision(bullet, piece) {
                         d++;
                                 bullet.remove();
                             }
+                            else{
+                                bullet.remove();
+                            }
+                            }
         } else if (bulletDirection == "right") {
             if(A==-45)
                 {
+                    if(mode=="hackerMode"){
                     semiHit.play();
                         let P=findAngle(arr[tempID]);
                         arr[tempID].innerHTML="";
@@ -272,6 +294,10 @@ function handleCollision(bullet, piece) {
                         destroyedSemiAngle[d]=P;
                         d++;
                         bullet.remove();
+                    }
+                    else{
+                        bullet.remove();
+                    }
                     
                 }
                 else if(A==45)
@@ -280,6 +306,7 @@ function handleCollision(bullet, piece) {
                     }
                     else if(A==-135)
                         {
+                            if(mode=="hackerMode"){
                             semiHit.play();
                                 let P=findAngle(arr[tempID]);
                                 arr[tempID].innerHTML="";
@@ -290,6 +317,10 @@ function handleCollision(bullet, piece) {
                         destroyedSemiAngle[d]=P;
                         d++;
                                 bullet.remove();
+                            }
+                            else{
+                                bullet.remove();
+                            }
                             
                         }
                         else if(A==135)
@@ -347,17 +378,28 @@ function handleCollision(bullet, piece) {
             {
                 if(nameTemp[2]=="aqua" && bulletDirection=="up")
                     {
+                        if(mode=="hackerMode"){
                         fireBulletFrom(piece,'up');
+                    }
+                    else{
+                        bullet.remove();
+                    }
                     }
                     else if (nameTemp[2]=="red" && bulletDirection=="down")
                         {
+                            if(mode=="hackerMode"){
                             fireBulletFrom(piece,'down');
+                        }
+                        else{
+                            bullet.remove();
+                        }
                         }
             }
             else if(nameTemp[1]=="TITAN" || nameTemp[1]=="titan")
                 {
                     if(nameTemp[2]=="red")
                         {
+                            timerFunction(3);
                             stopGameSound();
                             gameOverSound.play();
                             bullet.remove();
@@ -377,6 +419,7 @@ function handleCollision(bullet, piece) {
                         }
                         else if (nameTemp[2]=="aqua")
                             {
+                                timerFunction(3);
                                 stopGameSound();
                                 gameOverSound.play();
                                 bullet.remove();
