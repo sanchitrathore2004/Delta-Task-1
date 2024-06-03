@@ -425,6 +425,7 @@
     /* background-color: darkkhaki; */
 }
 @media screen and (min-width:1439px) and (max-width:2559px){
+    /* 1440 */
     .all{
         margin-left: 700px;
         width: 100px;
@@ -464,6 +465,7 @@
     }
 }
 @media screen and (min-width:424px) and (max-width:768px){
+    /* tablet */
     .navigation{
         width: 1326px;
     }
@@ -476,7 +478,7 @@
     }
     .start-game{
         margin-left: 60px;
-        margin-top: 335px;
+        margin-top: 745px;
         width: 700px;
     }
     .rotation{
@@ -501,6 +503,7 @@
     }
 }
 @media screen and (min-width:1023px) and (max-width:1439px){
+    /* 1024 */
     .navigation{
         width: 1330px;
     }
@@ -528,7 +531,7 @@
         width: 700px;
         height: 250px;
         margin-left: -200px;
-        margin-top: 280px;
+        margin-top: 630px;
     }
     .rotation{
         margin-left: 840px;
@@ -558,11 +561,12 @@
     
 }
 @media screen and (min-width:320px) and (max-width:426px){
+    /* mobile */
     .start-game{
         margin-left: 780px;
         width: 1000px;
         height: 400px;
-        margin-top: 280px;
+        margin-top: -260px;
     }
     .texttostart{
         font-size: 60px;

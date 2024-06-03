@@ -262,11 +262,7 @@ function handleCollision(bullet, piece) {
         } else if (bulletDirection == "right") {
             if(A==-45)
                 {
-                    fireBulletFrom(piece,'down');
-                }
-                else if(A==45)
-                    {
-                        semiHit.play();
+                    semiHit.play();
                         let P=findAngle(arr[tempID]);
                         arr[tempID].innerHTML="";
                         arr[tempID].style.backgroundColor="cornsilk";
@@ -276,14 +272,15 @@ function handleCollision(bullet, piece) {
                         destroyedSemiAngle[d]=P;
                         d++;
                         bullet.remove();
+                    
+                }
+                else if(A==45)
+                    {
+                        fireBulletFrom(piece,'down');
                     }
                     else if(A==-135)
                         {
-                            fireBulletFrom(piece,'up');
-                        }
-                        else if(A==135)
-                            {
-                                semiHit.play();
+                            semiHit.play();
                                 let P=findAngle(arr[tempID]);
                                 arr[tempID].innerHTML="";
                         arr[tempID].style.backgroundColor="cornsilk";
@@ -293,6 +290,11 @@ function handleCollision(bullet, piece) {
                         destroyedSemiAngle[d]=P;
                         d++;
                                 bullet.remove();
+                            
+                        }
+                        else if(A==135)
+                            {
+                                fireBulletFrom(piece,'up');
                             }
         }
     }
@@ -324,11 +326,11 @@ function handleCollision(bullet, piece) {
         } else if (bulletDirection == "left") {
             if(A==-45 || A==135)
                 {
-                    fireBulletFrom(piece,'left');
+                    fireBulletFrom(piece,'down');
                 }
                 else if(A==45 || A==-135)
                     {
-                        fireBulletFrom(piece,'down');
+                        fireBulletFrom(piece,'up');
                     }
         } else if (bulletDirection == "right") {
             if(A==-45 || A==135)
