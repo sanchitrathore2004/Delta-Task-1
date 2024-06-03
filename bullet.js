@@ -1,5 +1,5 @@
-import { arr, mode, stopGameSound } from "./scriptAll.js";
-import { Movement } from "./supportScript.js";
+import { arr, mode, playSpace, stopGameSound } from "./scriptAll.js";
+import { Movement, disableDiv } from "./supportScript.js";
 import { timerFunction } from "./timer.js";
 
 let finalAngleOfPeice;
@@ -399,6 +399,7 @@ function handleCollision(bullet, piece) {
                 {
                     if(nameTemp[2]=="red")
                         {
+                            disableDiv(playSpace);
                             timerFunction(3);
                             stopGameSound();
                             gameOverSound.play();
@@ -419,6 +420,7 @@ function handleCollision(bullet, piece) {
                         }
                         else if (nameTemp[2]=="aqua")
                             {
+                                disableDiv(playSpace);
                                 timerFunction(3);
                                 stopGameSound();
                                 gameOverSound.play();

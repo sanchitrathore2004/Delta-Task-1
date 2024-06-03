@@ -27,6 +27,7 @@ let modeInfo=document.querySelector(".mode-info");
 let thisIsLevel=document.querySelector(".this-is-level");
 let hmSound=document.querySelector("#hmSound");
 let nmSound=document.querySelector("#nmSound");
+export let playSpace=document.querySelector(".playspace");
 
 export let rotation = document.querySelector(".rotation");
 
@@ -67,9 +68,11 @@ normalMode.addEventListener("click", () => {
     nmSound.play();
 });
 disableDiv(directionalBullet);
+disableDiv(playSpace);
 start.addEventListener("click", () => {
     modeSelect.style.visibility="hidden";
     timerFunction(1);
+    enableDiv(playSpace);
     if(mode=="hackerMode"){
         enableDiv(directionalBullet);
         thisIsLevel.innerHTML="HACKER MODE";

@@ -1,6 +1,6 @@
 export let timer=document.querySelector(".timer");
 import { gameKhatam, gameOverSound } from "./bullet.js";
-import { arr, callFunc, reset } from "./scriptAll.js";
+import { arr, callFunc, playSpace, reset } from "./scriptAll.js";
 import { Movement, aquaPieces, colour, disableDiv, enableDiv, movePieceFrom, movePieceTo, namePiece, redPieces, switchTurn} from "./supportScript.js";
 
 
@@ -23,6 +23,7 @@ let intervalId;
                 timerAqua.innerHTML = parseInt(timerAqua.innerHTML) - 1;
                 if(timerAqua.innerHTML==0)
                     {
+                        disableDiv(playSpace);
                         stopGameSound();
                         gameOverSound.play();
                         console.log("red jeet gya");
@@ -44,6 +45,7 @@ let intervalId;
                 timerRed.innerHTML = parseInt(timerRed.innerHTML) - 1;
                 if(timerRed.innerHTML==0)
                     {
+                        disableDiv(playSpace);
                         stopGameSound();
                         gameOverSound.play();
                         gameKhatam.classList.add("game-over");
